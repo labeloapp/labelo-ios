@@ -1,0 +1,56 @@
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application")
+load("@build_bazel_rules_apple//apple:versioning.bzl", "apple_bundle_version")
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("//tools:shared.bzl", "app_info", "versions")
+
+# Version
+
+apple_bundle_version(
+    name = "Version",
+    build_version = "0.0.1",
+    short_version_string = "1.0",
+)
+
+# Code
+
+swift_library(
+    name = "labelo.library",
+    srcs = glob(["Sources/**/*.swift"]),
+    module_name = "Labelo",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@swiftpkg_swift_composable_architecture//:ComposableArchitecture",
+    ],
+)
+
+# Packaging
+
+ios_application(
+    name = "Labelo",
+    app_icons = glob(["Assets/Assets.xcassets/AppIcon.appiconset/**"]),
+    bundle_id = app_info.bundle_id,
+    bundle_name = app_info.bundle_name,
+    executable_name = app_info.executable_name,
+    families = [
+        "iphone",
+        "ipad",
+    ],
+    infoplists = ["Resources/Info.plist"],
+    minimum_os_version = versions.minimum_ios_version,
+    resources = glob(
+        [
+            "Assets/Assets.xcassets/**",
+        ],
+        exclude = ["Assets/Assets.xcassets/AppIcon.appiconset/**"],
+    ),
+    # Add localizable assets here.
+    # strings = glob(["*.lproj/Localizable.strings"]),
+    version = ":Version",
+    visibility = [
+        "//:__subpackages__",
+        "@rules_xcodeproj//xcodeproj:generated",
+    ],
+    deps = [
+        ":labelo.library",
+    ],
+)

@@ -1,3 +1,4 @@
+import SwiftUI
 import ComposableArchitecture
 
 @Reducer
@@ -11,11 +12,13 @@ struct TagListFeature {
         case addTag(Tag)
     }
 
-    var body: some Reducer {
+    var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
                 case .addTag(let tag):
-                state.tags.append(tag)
+                withAnimation {
+                    state.tags.append(tag)
+                }
                 return .none
             }
         }

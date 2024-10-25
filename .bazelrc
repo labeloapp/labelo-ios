@@ -1,0 +1,18 @@
+# Enable Bzlmod for every Bazel command
+common --enable_bzlmod
+
+common --remote_cache=grpcs://remote.buildbuddy.io
+common --noremote_upload_local_results
+common:upload --disk_cache=
+common:upload --remote_upload_local_results
+
+# TODO: Add auth for build buddy
+
+# CI
+
+common:ci --config=upload
+
+# Cache warming
+
+common:warming --config=upload
+common:warming --remote_download_minimal
