@@ -1,6 +1,3 @@
-# Enable Bzlmod for every Bazel command
-common --enable_bzlmod
-
 common --remote_cache=grpcs://remote.buildbuddy.io
 common --noremote_upload_local_results
 common:upload --disk_cache=

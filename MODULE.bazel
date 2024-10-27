@@ -4,7 +4,6 @@ bazel_dep(name = "rules_apple", version = "3.3.0", repo_name = "build_bazel_rule
 bazel_dep(name = "bazel_skylib", version = "1.5.0")
 bazel_dep(name = "rules_xcodeproj", version = "2.7.0")
 bazel_dep(name = "rules_swift_package_manager", version = "0.40.1")
-bazel_dep(name = "gazelle", version = "0.35.0")
 
 swift_deps = use_extension(
     "@rules_swift_package_manager//:extensions.bzl",
