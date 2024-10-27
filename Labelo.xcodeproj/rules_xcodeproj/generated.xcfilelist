@@ -1,2 +1,0 @@
-$(BAZEL_OUT)/ios_sim_arm64-dbg-ios-sim_arm64-min16.0-applebin_ios-ST-d656ce74c288/bin/Labelo/rules_xcodeproj/Labelo/Info.plist
-$(BAZEL_OUT)/ios_sim_arm64-dbg-ios-sim_arm64-min16.0-applebin_ios-ST-d656ce74c288/bin/external/rules_swift_package_manager~~swift_deps~swiftpkg_swift_composable_architecture/ComposableArchitecture.rspm_resource_bundle_accessor_ResourceBundleAccessor.swift
