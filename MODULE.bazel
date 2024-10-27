@@ -1,0 +1,17 @@
+bazel_dep(name = "apple_support", version = "1.17.1")
+bazel_dep(name = "rules_swift", version = "2.2.1", repo_name = "build_bazel_rules_swift")
+bazel_dep(name = "rules_apple", version = "3.3.0", repo_name = "build_bazel_rules_apple")
+bazel_dep(name = "bazel_skylib", version = "1.5.0")
+bazel_dep(name = "rules_xcodeproj", version = "2.7.0")
+bazel_dep(name = "rules_swift_package_manager", version = "0.40.1")
+
+swift_deps = use_extension(
+    "@rules_swift_package_manager//:extensions.bzl",
+    "swift_deps",
+)
+swift_deps.from_package(
+    declare_swift_deps_info = True,
+    resolved = "//:Package.resolved",
+    swift = "//:Package.swift",
+)
+use_repo(swift_deps, "swift_deps_info", "swiftpkg_swift_composable_architecture")
