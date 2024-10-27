@@ -5,10 +5,17 @@ struct TagListView: View {
     let store: StoreOf<TagListFeature>
 
     var body: some View {
-        List(store.tags) { tag in
-            VStack {
-                Text(tag.name)
+        List(store.tags, id: \.id) { tag in
+            Text(tag.name)
+        }
+        .disabled(store.isLoading)
+        .overlay {
+            if store.isLoading {
+                ProgressView()
             }
+        }
+        .onAppear {
+            store.send(.getTags)
         }
         .toolbar {
             Button("", systemImage: "plus") {
