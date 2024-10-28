@@ -1,0 +1,93 @@
+diff --git a/swiftpkg/internal/bzl_selects.bzl b/swiftpkg/internal/bzl_selects.bzl
+index cb5e95f..0341070 100644
+--- a/swiftpkg/internal/bzl_selects.bzl
++++ b/swiftpkg/internal/bzl_selects.bzl
+@@ -133,7 +133,7 @@ _noop_kind_handler = _new_kind_handler(
+     transform = lambda v: v,
+ )
+ 
+-def _to_starlark(values, kind_handlers = {}, mutually_inclusive = False):
++def _to_starlark(values, kind_handlers = {}, mutually_inclusive = False, single_value_select = False):
+     """Converts the provied values into Starlark using the information in the \
+     kind handlers.
+ 
+@@ -144,6 +144,8 @@ def _to_starlark(values, kind_handlers = {}, mutually_inclusive = False):
+         mutually_inclusive: A `bool` that determines if multiple select
+             expressions should be generated so that the conditions
+             are mutually inclusive.
++        single_value_select: Set to `True` to expect a single value for each
++            select statement instead of a list.
+ 
+     Returns:
+         A `struct` as returned by `starlark_codegen.new_expr`.
+@@ -191,13 +193,13 @@ def _to_starlark(values, kind_handlers = {}, mutually_inclusive = False):
+             # Generate multiple select expressions for each condition.
+             for k in sorted_keys:
+                 new_dict = {
+-                    k: sets.to_list(select_dict[k]),
++                    k: _get_values(k, select_dict, single_value_select),
+                 }
+                 _append_select(expr_members, kind_handler, new_dict)
+         else:
+             # Combine all conditions of the same kind into one select expression.
+             new_dict = {
+-                k: sets.to_list(select_dict[k])
++                k: _get_values(k, select_dict, single_value_select)
+                 for k in sorted_keys
+             }
+             _append_select(expr_members, kind_handler, new_dict)
+@@ -209,6 +211,16 @@ No Starlark expression members were generated for {}\
+ 
+     return scg.new_expr(*expr_members)
+ 
++def _get_values(k, select_dict, single_value_select):
++    select_values = sets.to_list(select_dict[k])
++    if single_value_select:
++        if len(select_values) > 1:
++            fail("Expected a single value for condition \"{}\" but got more than one value: {}".format(k, select_values))
++
++        return select_values[0]
++    else:
++        return select_values
++
+ def _append_select(expr_members, kind_handler, select_dict):
+     if len(expr_members) > 0:
+         expr_members.append(scg.new_op("+"))
+diff --git a/swiftpkg/internal/swiftpkg_build_files.bzl b/swiftpkg/internal/swiftpkg_build_files.bzl
+index c8bbf1a..4899dc9 100644
+--- a/swiftpkg/internal/swiftpkg_build_files.bzl
++++ b/swiftpkg/internal/swiftpkg_build_files.bzl
+@@ -12,6 +12,10 @@ load(":pkginfo_target_deps.bzl", "pkginfo_target_deps")
+ load(":pkginfo_targets.bzl", "pkginfo_targets")
+ load(":pkginfos.bzl", "build_setting_kinds", "module_types", "pkginfos", "target_types")
+ load(":starlark_codegen.bzl", scg = "starlark_codegen")
++load(
++    "//config_settings/spm/platform:platforms.bzl",
++    spm_platforms = "platforms",
++)
+ 
+ # MARK: - Target Entry Point
+ 
+@@ -136,6 +140,22 @@ def _swift_target_build_file(pkg_ctx, target):
+                 copts.append("-enable-experimental-feature")
+                 copts.extend(lists.flatten(bzl_selects.new_from_build_setting(bs)))
+ 
++    # Target the appropriate platform version.
++    minimum_os_version = [bzl_selects.new(
++        value = platform.version,
++        kind = "minimumOsVersion",
++        condition = spm_platforms.label(platform.name),
++    ) for platform in pkg_ctx.pkg_info.platforms if spm_platforms.is_supported(platform.name)]
++
++    if len(minimum_os_version) > 0:
++        attrs["minimum_os_version"] = bzl_selects.to_starlark(
++            minimum_os_version,
++            {"minimumOsVersion": bzl_selects.new_kind_handler(default = "oldest")},
++            single_value_select = True,
++        )
++    else:
++        attrs["minimum_os_version"] = "oldest"
++
+     if len(copts) > 0:
+         attrs["copts"] = bzl_selects.to_starlark(copts, mutually_inclusive = True)
+ 

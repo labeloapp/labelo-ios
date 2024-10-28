@@ -6,7 +6,7 @@ let package = Package(
     name: "Labelo-iOS",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v16),
+        .iOS(.v17),
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.15.2"),
