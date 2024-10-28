@@ -1,0 +1,204 @@
+diff --git a/proto/swift_proto_utils.bzl b/proto/swift_proto_utils.bzl
+index a2bb033..7cadc7f 100644
+--- a/proto/swift_proto_utils.bzl
++++ b/proto/swift_proto_utils.bzl
+@@ -281,6 +281,7 @@ def compile_swift_protos_for_target(
+         swift_infos = get_providers(compiler_deps, SwiftInfo),
+         target_name = target_label.name,
+         workspace_name = ctx.workspace_name,
++        minimum_os_version = ctx.attr.minimum_os_version,
+     )
+ 
+     module_context = compile_result.module_context
+diff --git a/swift/internal/attrs.bzl b/swift/internal/attrs.bzl
+index c2e72bd..075c4bb 100644
+--- a/swift/internal/attrs.bzl
++++ b/swift/internal/attrs.bzl
+@@ -176,6 +176,15 @@ the target as `testonly = True`.
+                 mandatory = False,
+             ),
+         } if include_dev_srch_paths_attrib else {},
++        {
++            "minimum_os_version": attr.string(
++                doc = """
++An optional string indicating the minimum OS version supported by the target,
++represented as a dotted version number (for example, "9.0").
++""",
++                mandatory = False,
++            ),
++        },
+     )
+ 
+ def swift_config_attrs():
+diff --git a/swift/internal/compiling.bzl b/swift/internal/compiling.bzl
+index 27a892b..4354df7 100644
+--- a/swift/internal/compiling.bzl
++++ b/swift/internal/compiling.bzl
+@@ -67,6 +67,7 @@ load(
+     "create_swift_info",
+     "create_swift_module",
+ )
++load(":target_triples.bzl", "target_triples")
+ load(
+     ":utils.bzl",
+     "compact",
+@@ -103,6 +104,56 @@ def _module_name_safe(string):
+ 
+     return result
+ 
++def _minimum_os_version_copts(minimum_os_version, swift_toolchain):
++    """Returns additional copts used to set the target deployment version."""
++    copts = []
++
++    if minimum_os_version:
++        cc_toolchain = swift_toolchain.cc_toolchain_info
++
++        target_triple = target_triples.normalize_for_swift(
++            target_triples.parse(cc_toolchain.target_gnu_system_name),
++        )
++
++        (os, version) = target_triples.split_os_version(target_triple.os)
++
++        if not version:
++            fail(
++                ("Could not extract the version number from the " +
++                 "target_triple.os: {}").format(target_triple.os),
++            )
++
++        # TODO: For now, hardcode the oldest supported deployment versions.
++        # These really should be extracted from the `MinimumDeploymentTarget`
++        # field of the SDK's `SDKSettings` file, but this information is not
++        # currently available during the analysis phase.
++        if minimum_os_version == "oldest":
++            if os == "macos":
++                version = "10.10"
++            elif os == "ios":
++                version = "12.0"
++            else:
++                fail(
++                    ("Determining oldest deployment version for '{}' is " +
++                     "unsupported").format(os),
++                )
++        else:
++            version = minimum_os_version
++
++        target_triple = target_triples.make(
++            cpu = target_triple.cpu,
++            vendor = target_triple.vendor,
++            os = "{}{}".format(os, version),
++            environment = target_triple.environment,
++        )
++
++        copts.extend([
++            "-target",
++            target_triples.str(target_triple),
++        ])
++
++    return copts
++
+ def derive_module_name(*args):
+     """Returns a derived module name from the given build label.
+ 
+@@ -376,7 +427,8 @@ def compile(
+         swift_infos,
+         swift_toolchain,
+         target_name,
+-        workspace_name):
++        workspace_name,
++        minimum_os_version = None):
+     """Compiles a Swift module.
+ 
+     Args:
+@@ -435,6 +487,10 @@ def compile(
+         workspace_name: The name of the workspace for which the code is being
+              compiled, which is used to determine unique file paths for some
+              outputs.
++        minimum_os_version: Overrides the `-target` os version. Either an
++            explicit dotted version number or the string "oldest", which will
++            translate to the oldest supported deployment version for the current
++            SDK.
+ 
+     Returns:
+         A `struct` with the following fields:
+@@ -493,6 +549,9 @@ def compile(
+         feature_name = SWIFT_FEATURE_EMIT_SWIFTSOURCEINFO,
+     )
+ 
++    # Override the target deployment version, if specified.
++    copts.extend(_minimum_os_version_copts(minimum_os_version, swift_toolchain))
++
+     if is_feature_enabled(
+         feature_configuration = feature_configuration,
+         feature_name = SWIFT_FEATURE__SUPPORTS_CONST_VALUE_EXTRACTION,
+diff --git a/swift/internal/target_triples.bzl b/swift/internal/target_triples.bzl
+index 0e48303..15a39d4 100644
+--- a/swift/internal/target_triples.bzl
++++ b/swift/internal/target_triples.bzl
+@@ -231,6 +231,7 @@ target_triples = struct(
+     normalize_for_swift = _normalize_for_swift,
+     parse = _parse,
+     platform_name_for_swift = _platform_name_for_swift,
++    split_os_version = _split_os_version,
+     str = _str,
+     unversioned_os = _unversioned_os,
+ )
+diff --git a/swift/swift_binary.bzl b/swift/swift_binary.bzl
+index 567ac5f..4938621 100644
+--- a/swift/swift_binary.bzl
++++ b/swift/swift_binary.bzl
+@@ -104,6 +104,7 @@ def _swift_binary_impl(ctx):
+             swift_toolchain = swift_toolchain,
+             target_name = ctx.label.name,
+             workspace_name = ctx.workspace_name,
++            minimum_os_version = ctx.attr.minimum_os_version,
+         )
+         module_contexts.append(compile_result.module_context)
+         compilation_outputs = compile_result.compilation_outputs
+diff --git a/swift/swift_compiler_plugin.bzl b/swift/swift_compiler_plugin.bzl
+index 9dc13a1..22ba26e 100644
+--- a/swift/swift_compiler_plugin.bzl
++++ b/swift/swift_compiler_plugin.bzl
+@@ -105,6 +105,7 @@ def _swift_compiler_plugin_impl(ctx):
+         swift_toolchain = swift_toolchain,
+         target_name = ctx.label.name,
+         workspace_name = ctx.workspace_name,
++        minimum_os_version = ctx.attr.minimum_os_version,
+     )
+     module_context = compile_result.module_context
+     module_contexts.append(module_context)
+diff --git a/swift/swift_library.bzl b/swift/swift_library.bzl
+index 3d57137..afccce2 100644
+--- a/swift/swift_library.bzl
++++ b/swift/swift_library.bzl
+@@ -182,6 +182,7 @@ def _swift_library_impl(ctx):
+         swift_toolchain = swift_toolchain,
+         target_name = ctx.label.name,
+         workspace_name = ctx.workspace_name,
++        minimum_os_version = ctx.attr.minimum_os_version,
+     )
+ 
+     module_context = compile_result.module_context
+diff --git a/swift/swift_module_alias.bzl b/swift/swift_module_alias.bzl
+index b41c15a..f98629a 100644
+--- a/swift/swift_module_alias.bzl
++++ b/swift/swift_module_alias.bzl
+@@ -73,6 +73,7 @@ def _swift_module_alias_impl(ctx):
+         swift_toolchain = swift_toolchain,
+         target_name = ctx.label.name,
+         workspace_name = ctx.workspace_name,
++        minimum_os_version = ctx.attr.minimum_os_version,
+     )
+ 
+     module_context = compile_result.module_context
+diff --git a/swift/swift_test.bzl b/swift/swift_test.bzl
+index 2cb603d..1d20dd5 100644
+--- a/swift/swift_test.bzl
++++ b/swift/swift_test.bzl
+@@ -313,6 +313,7 @@ def _do_compile(
+         swift_toolchain = swift_toolchain,
+         target_name = name,
+         workspace_name = workspace_name,
++        minimum_os_version = ctx.attr.minimum_os_version,
+     )
+ 
+ def _swift_test_impl(ctx):
