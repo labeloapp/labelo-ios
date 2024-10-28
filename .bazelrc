@@ -34,3 +34,6 @@ common:ci --config=upload
 
 common:warming --config=upload
 common:warming --remote_download_minimal
+
+# Load Xcode bazelrc file.
+xcode.bazelrc
