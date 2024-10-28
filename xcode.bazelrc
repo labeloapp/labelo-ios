@@ -1,0 +1,4 @@
+startup --host_jvm_args=-Xdock:name=/Applications/Xcode.app/Contents/Developer
+build --xcode_version=16A242d
+build --repo_env=XCODE_VERSION=16A242d
+build --repo_env=DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer

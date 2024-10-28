@@ -1,9 +1,30 @@
+# It is faster to compute digests with Blake3
+startup --digest_function=blake3
+common --cache_computed_file_digests=500000
+
+# We disable sandboxing as it is slow on Darwin.
+common --noworker_sandboxing
+common --spawn_strategy=worker,local
+
+# Use a static value for `PATH` and does not inherit `LD_LIBRARY_PATH`. Doesn't let environment
+# variables like `PATH` sneak into the build, which can cause massive cache misses when they change.
+build                       --incompatible_strict_action_env
+
+# Use all available CPU cores for workers.
+build                       --worker_max_instances=HOST_CPUS
+
+# Enable local disk cache
+common --disk_cache=~/bazel_disk_cache
 common --remote_cache=grpcs://remote.buildbuddy.io
 common --noremote_upload_local_results
+# We don't want CI machines to use disk cache.
 common:upload --disk_cache=
 common:upload --remote_upload_local_results
 
 # TODO: Add auth for build buddy
+
+# No need to cache these types of artifacts
+common --modify_execution_info=^(AppleLipo|BitcodeSymbolsCopy|BundleApp|BundleTreeApp|DsymDwarf|DsymLipo|GenerateAppleSymbolsFile|ObjcBinarySymbolStrip|CppArchive|CppLink|ObjcLink|ProcessAndSign|SignBinary|SwiftArchive|SwiftStdlibCopy)$=+no-remote,^(BundleResources|ImportedDynamicFrameworkProcessor)$=+no-remote-exec
 
 # CI
 
