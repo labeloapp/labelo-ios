@@ -8,18 +8,25 @@ struct TagListFeature {
         var tags: [Tag] = []
         var isLoading: Bool = false
         @Presents var createTag: TagCreateFeature.State?
+        @Presents var readResult: ReadResultFeature.State?
+        var path = StackState<TagDetailsFeature.State>()
     }
 
     enum Action {
+        case createTag(PresentationAction<TagCreateFeature.Action>)
+        case readResult(PresentationAction<ReadResultFeature.Action>)
+        case path(StackAction<TagDetailsFeature.State, TagDetailsFeature.Action>)
         case getTags
         case tagResponse(tags: [Tag])
         case addButtonTapped
         case addTag(Tag)
-        case createTag(PresentationAction<TagCreateFeature.Action>)
         case delete(Tag)
+        case didTapReadButton
+        case didRead(NFCSessionClient.ReadResult)
     }
 
     @Dependency(\.database) var database
+    @Dependency(\.nfcSession) var nfcSession
 
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -57,10 +64,28 @@ struct TagListFeature {
                     try await database.delete(tag: tag)
                     await send(.getTags)
                 }
+            case .didTapReadButton:
+                return .run { send in
+                    let string = try await nfcSession.read()
+                    await send(.didRead(string))
+                }
+            case .didRead(let result):
+                state.readResult = ReadResultFeature.State(result: result)
+                return .none
+            case .readResult:
+                return .none
+            case .path:
+                return .none
             }
         }
         .ifLet(\.$createTag, action: \.createTag) {
             TagCreateFeature()
+        }
+        .ifLet(\.$readResult, action: \.readResult) {
+            ReadResultFeature()
+        }
+        .forEach(\.path, action: \.path) {
+            TagDetailsFeature()
         }
     }
 }

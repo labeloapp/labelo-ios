@@ -21,24 +21,29 @@ actor Database {
     }
 
     func getTags() async throws -> [Tag] {
-        let tags = try context.fetch(FetchDescriptor<Tag>())
-        return tags
+        let tags = try context.fetch(FetchDescriptor<TagDTO>())
+        return tags.map { $0.toModel }
     }
 
     func save(_ tag: Tag) async throws {
-        context.insert(tag)
+        let dto = TagDTO(from: tag)
+        context.insert(dto)
         try context.save()
     }
 
     func delete(_ tag: Tag) async throws {
-        context.delete(tag)
+        let predicate = #Predicate<TagDTO> { $0.id == tag.id }
+        guard let tagToDelete = try context.fetch(FetchDescriptor<TagDTO>(predicate: predicate)).first else {
+            return
+        }
+        context.delete(tagToDelete)
         try context.save()
     }
 }
 
 extension DatabaseClient {
     static var live: DatabaseClient  {
-        let database = Database(modelType: Tag.self)
+        let database = Database(modelType: TagDTO.self)
 
         return DatabaseClient {
             try await database.getTags()

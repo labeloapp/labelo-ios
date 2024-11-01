@@ -5,15 +5,16 @@ import ComposableArchitecture
 struct LabeloApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
                 TagListView(
                     store: Store(
                         initialState: TagListFeature.State()
                     ) {
                         TagListFeature()
+#if DEBUG
+                            ._printChanges()
+#endif
                     }
                 )
-            }
         }
     }
 }

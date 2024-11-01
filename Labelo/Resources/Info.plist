@@ -6,13 +6,25 @@
 	<dict/>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<key>NFCReaderUsageDescription</key>
+	<string>$(PRODUCT_NAME) uses NFC to read tags.</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+    <key>com.apple.developer.nfc.readersession.felica.systemcodes</key>
+    <array>
+        <string>12FC</string>
+    </array>
+    <key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
+    <array>
+        <string>D2760000850101</string>
+    </array>
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>nfc</string>
+    </array>
 </dict>
 </plist>

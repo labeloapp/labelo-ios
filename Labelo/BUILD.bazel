@@ -1,10 +1,11 @@
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application")
+load("@build_bazel_rules_apple//apple:apple.bzl", "local_provisioning_profile")
 load("@build_bazel_rules_apple//apple:versioning.bzl", "apple_bundle_version")
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 load("//tools:shared.bzl", "app_info", "versions")
+load( "@rules_xcodeproj//xcodeproj:defs.bzl", "xcode_provisioning_profile",)
 
 # Version
-
 apple_bundle_version(
     name = "Version",
     build_version = "0.0.1",
@@ -23,6 +24,18 @@ swift_library(
     ],
 )
 
+xcode_provisioning_profile(
+   name = "xcode_profile",
+   managed_by_xcode = True,
+   provisioning_profile = ":provisioning_profile",
+)
+
+local_provisioning_profile(
+    name = "provisioning_profile",
+    profile_name = "iOS Labelo Provisioning Profile",
+    team_id = "RK3RLP5S33",
+)
+
 # Packaging
 
 ios_application(
@@ -31,12 +44,14 @@ ios_application(
     bundle_id = app_info.bundle_id,
     bundle_name = app_info.bundle_name,
     executable_name = app_info.executable_name,
+    entitlements = "Labelo.entitlements",
     families = [
         "iphone",
         "ipad",
     ],
     infoplists = ["Resources/Info.plist"],
     minimum_os_version = versions.minimum_ios_version,
+    provisioning_profile = ":xcode_profile",
     resources = glob(
         [
             "Assets/Assets.xcassets/**",

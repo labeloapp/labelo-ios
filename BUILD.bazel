@@ -9,12 +9,13 @@ load(
 xcodeproj(
     name = "xcodeproj",
     generation_mode = "incremental",
+    adjust_schemes_for_swiftui_previews = True,
     project_name = "Labelo",
     tags = ["manual"],
     top_level_targets = [
         top_level_target(
             "//Labelo",
-            target_environments = ["simulator"],
+            target_environments = ["simulator", "device"],
         ),
     ],
 )
