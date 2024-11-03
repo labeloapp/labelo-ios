@@ -1,0 +1,37 @@
+From e12f3a5f445b08787f1e6594e3dcd7d7b64d80fe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Adin=20=C4=86ebi=C4=87?= <cebic.ad@gmail.com>
+Date: Tue, 24 Sep 2024 14:18:24 +0200
+Subject: [PATCH] Support new path for provisioning profiles (#2544)
+
+---
+ apple/internal/local_provisioning_profiles.bzl | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/apple/internal/local_provisioning_profiles.bzl b/apple/internal/local_provisioning_profiles.bzl
+index 50bdbc70..71d5275a 100644
+--- a/apple/internal/local_provisioning_profiles.bzl
++++ b/apple/internal/local_provisioning_profiles.bzl
+@@ -10,10 +10,19 @@ def _provisioning_profile_repository(repository_ctx):
+     repository_ctx.execute(["mkdir", "-p", system_profiles_path])
+     repository_ctx.symlink(system_profiles_path, "profiles")
+ 
++    # Since Xcode 16 there is a new location for the provisioning profiles.
++    # We need to keep the both old and new path for quite some time.
++    user_profiles_path = "{}/Library/Developer/Xcode/UserData/Provisioning Profiles".format(repository_ctx.os.environ["HOME"])
++    repository_ctx.execute(["mkdir", "-p", user_profiles_path])
++    repository_ctx.symlink(user_profiles_path, "user profiles")
++
+     repository_ctx.file("BUILD.bazel", """\
+ filegroup(
+     name = "profiles",
+-    srcs = glob(["profiles/*.mobileprovision"], allow_empty = True),
++    srcs = glob([
++      "profiles/*.mobileprovision",
++      "user profiles/*.mobileprovision",
++    ], allow_empty = True),
+     visibility = ["//visibility:public"],
+ )
+ 
+-- 
+2.39.5 (Apple Git-154)
+
