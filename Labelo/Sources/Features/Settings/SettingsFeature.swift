@@ -9,7 +9,6 @@ struct SettingsFeature {
 
     var body: some Reducer<State, Action> {
         Reduce { state, action in
-            // TODO: Implement
             return .none
         }
     }

@@ -13,5 +13,8 @@ struct AppView: View {
                 SettingsView(store: store.scope(state: \.settingsState, action: \.settingsAction))
             }
         }
+        .onOpenURL { url in
+            print(url.absoluteString)
+        }
     }
 }

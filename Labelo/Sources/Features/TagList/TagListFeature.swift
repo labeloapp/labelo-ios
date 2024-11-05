@@ -71,6 +71,14 @@ struct TagListFeature {
                 }
             case .didRead(let result):
                 state.readResult = ReadResultFeature.State(result: result)
+
+                if case .tag(let tag) = result {
+                    return .run { _ in
+                        let entry = HistoryEntry(tag: tag, readAt: .now)
+                        try await database.saveHistoryEntry(entry)
+                    }
+                }
+
                 return .none
             case .readResult:
                 return .none
