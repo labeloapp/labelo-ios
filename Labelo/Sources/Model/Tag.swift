@@ -39,5 +39,7 @@ extension Tag {
         Tag(name: "Tag 2", payload: .url(URL(string: "https://example.com")!)),
         Tag(name: "Tag 3", payload: .text("Test"))
     ]
+
+    static let empty = Tag(name: "", payload: .text(""))
 }
 

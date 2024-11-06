@@ -17,7 +17,7 @@ struct TagCreateFeature {
 
     @ObservableState
     struct State: Equatable {
-        var tag = Tag(name: "", payload: .text(""))
+        var tag: Tag
         var type: PayloadType = .text
         var urlString: String = ""
         var focus: Field?
@@ -75,7 +75,7 @@ struct TagCreateFeature {
 
                 switch state.type {
                 case .url:
-                    guard let url = URL(string: state.urlString) else {
+                    guard let url = URL(string: state.urlString, encodingInvalidCharacters: false) else {
                         state.isPayloadError = true
                         return .none
                     }
