@@ -20,7 +20,7 @@ struct AppFeature {
         case settingsAction(SettingsFeature.Action)
     }
 
-    var body: some Reducer<Self> {
+    var body: some Reducer<State, Action> {
         Scope(state: \.listState, action: \.listAction) {
             TagListFeature()
         }

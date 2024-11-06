@@ -2,6 +2,7 @@ import Foundation
 import SwiftData
 
 typealias TagDTO = SchemaV1.TagDTO
+typealias HistoryEntryDTO = SchemaV1.HistoryEntryDTO
 
 enum SchemaV1: VersionedSchema {
     static var versionIdentifier: Schema.Version = .init(1, 0, 0)
@@ -55,6 +56,30 @@ enum SchemaV1: VersionedSchema {
 
         var toModel: Tag {
             Tag(id: id, name: name, payload: payload.toModel)
+        }
+    }
+
+    @Model
+    final class HistoryEntryDTO: Identifiable, Equatable {
+        @Attribute(.unique) var id: UUID
+        @Relationship(deleteRule: .cascade)
+        var tag: TagDTO
+        var readAt: Date
+
+        init(id: UUID = UUID(), tag: TagDTO, readAt: Date) {
+            self.id = id
+            self.tag = tag
+            self.readAt = readAt
+        }
+
+        init(from model: HistoryEntry) {
+            self.id = model.id
+            self.tag = SchemaV1.TagDTO(from: model.tag)
+            self.readAt = model.readAt
+        }
+
+        var toModel: HistoryEntry {
+            HistoryEntry(id: self.id, tag: self.tag.toModel, readAt: self.readAt)
         }
     }
 }

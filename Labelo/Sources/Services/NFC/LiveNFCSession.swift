@@ -168,19 +168,21 @@ extension LiveNFCSession: NFCNDEFReaderSessionDelegate {
     }
 
     private func nfcNDEFPayload(from tag: Tag) -> NFCNDEFPayload? {
-        switch tag.payload {
-        case .text(let text):
-            return NFCNDEFPayload.wellKnownTypeTextPayload(string: text, locale: .current)
-        case .url(let url):
-            return NFCNDEFPayload.wellKnownTypeURIPayload(url: url)
-        case .data(let data):
-            return NFCNDEFPayload(
-                format: .media,
-                type: "application/octet-stream".data(using: .utf8)!,
-                identifier: Data(),
-                payload: data
+        let jsonEncoder = JSONEncoder()
+
+        if let tagData = try? jsonEncoder.encode(tag) {
+            let payload = NFCNDEFPayload(
+                format: .nfcExternal,
+                type: tagData,
+                identifier: "app.labelo".data(
+                    using: .utf8
+                )!,
+                payload: tagData
             )
+            return payload
         }
+
+        return nil
     }
 
     func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: any Error) {
@@ -261,6 +263,18 @@ extension LiveNFCSession: NFCTagReaderSessionDelegate {
                         } else if let url = record.wellKnownTypeURIPayload() {
                             self.readerContinuation?.resume(returning: .url(url))
                         }
+                    case .nfcExternal:
+                        let decoder = JSONDecoder()
+
+                        guard let tag = try? decoder.decode(Tag.self, from: record.payload) else {
+                            session.invalidate(errorMessage: "Read error. Please try again.")
+                            self.readerContinuation?.resume(throwing: NFCSessionClientError.readError)
+                            self.readerContinuation = nil
+                            return
+                        }
+
+                        self.readerContinuation?.resume(returning: .tag(tag))
+
                     default:
                         self.readerContinuation?.resume(returning: .unknown)
                     }

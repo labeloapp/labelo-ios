@@ -12,6 +12,7 @@ extension NFCSessionClient {
     enum ReadResult: Equatable {
         case text(String)
         case url(URL)
+        case tag(Tag)
         case unknown
         case empty
     }

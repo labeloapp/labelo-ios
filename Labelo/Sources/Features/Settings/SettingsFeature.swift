@@ -7,9 +7,8 @@ struct SettingsFeature {
 
     enum Action {}
 
-    var body: some Reducer<Self> {
+    var body: some Reducer<State, Action> {
         Reduce { state, action in
-            // TODO: Implement
             return .none
         }
     }
