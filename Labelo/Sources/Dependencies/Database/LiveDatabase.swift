@@ -45,9 +45,12 @@ actor Database {
         try context.save()
     }
 
-    func getHistory() async throws -> [HistoryEntry] {
+    func getHistory(for tag: Tag) async throws -> [HistoryEntry] {
         let sortDescriptior = SortDescriptor<HistoryEntryDTO>(\.readAt, order: .reverse)
-        let history = try context.fetch(FetchDescriptor<HistoryEntryDTO>(sortBy: [sortDescriptior]))
+        let predicate = #Predicate<HistoryEntryDTO> {
+            $0.tag.id == tag.id
+        }
+        let history = try context.fetch(FetchDescriptor<HistoryEntryDTO>(predicate: predicate, sortBy: [sortDescriptior]))
         return history.map { $0.toModel }
     }
 
@@ -73,8 +76,8 @@ extension DatabaseClient {
             try await database.save(tag)
         } delete: { tag in
             try await database.delete(tag)
-        } getHistory: {
-            try await database.getHistory()
+        } getHistory: { tag in
+            try await database.getHistory(for: tag)
         } saveHistoryEntry: { entry in
             try await database.save(entry)
         }

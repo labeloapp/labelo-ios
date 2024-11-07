@@ -44,7 +44,9 @@ struct TagListView: View {
                 }
             }
             .sheet(item: $store.scope(state: \.readResult, action: \.readResult)) { store in
-                ReadResultView(store: store)
+                NavigationView {
+                    ReadResultView(store: store)
+                }
             }
         } destination: { store in
             TagDetailsView(store: store)

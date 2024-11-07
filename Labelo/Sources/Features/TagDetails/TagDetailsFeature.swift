@@ -22,8 +22,8 @@ struct TagDetailsFeature {
         Reduce { state, action in
             switch action {
             case .getHistory:
-                return .run { send in
-                    let entries = try await database.getHistory()
+                return .run { [state] send in
+                    let entries = try await database.getHistory(state.tag)
                     await send(.historyResponse(entries))
                 }
             case .historyResponse(let entries):

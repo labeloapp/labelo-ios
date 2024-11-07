@@ -27,6 +27,21 @@ struct ReadResultView: View {
                 ContentUnavailableView("Couldn't decode tag data", systemImage: "radiowaves.right")
             }
         }
+        .onAppear {
+            store.send(.onAppear)
+        }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    store.send(.didTapSpeakButton)
+                } label: {
+                    Image(systemName: "play.fill")
+                        .resizable()
+                        .frame(width: 22, height: 22)
+                }
+                .disabled(store.isSpeaking)
+            }
+        }
     }
 
     @ViewBuilder
