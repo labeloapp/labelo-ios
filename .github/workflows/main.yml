@@ -28,4 +28,4 @@ jobs:
         repository-cache: true
           
     - name: Run tests
-      run: bazel test
+      run: bazel test //LabeloTests:LabeloTests 
