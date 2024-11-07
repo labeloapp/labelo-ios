@@ -32,7 +32,8 @@ struct ReadResultTests {
         }
     }
 
-    @Test func testOpenURL() async throws {
+    @Test
+    func testOpenURL() async throws {
         let url = URL(string: "https://example.com")!
         let result = NFCSessionClient.ReadResult.tag(.init(name: "test", payload: .url(url)))
 
@@ -56,16 +57,14 @@ struct ReadResultTests {
         }
     }
 
-    @Test func tes() async throws {
+    @Test
+    func testAutoSpeechEnabled() async throws {
         let url = URL(string: "https://example.com")!
         let result = NFCSessionClient.ReadResult.tag(.init(name: "test", payload: .url(url)))
 
         let testClient = SpeechClient {
             return true
-        } speak: { _ in
-        }
-
-
+        } speak: { _ in }
 
         let store = TestStore(initialState: ReadResultFeature.State(isAutoSpeechEnabled: true, result: result)) {
             ReadResultFeature()
@@ -79,6 +78,24 @@ struct ReadResultTests {
         await store.receive(\.didTapSpeakButton)
         await store.receive(\.setIsSpeaking, true)
         await store.receive(\.setIsSpeaking, false)
+    }
+
+    @Test
+    func testAutoSpeechDisabled() async throws {
+        let url = URL(string: "https://example.com")!
+        let result = NFCSessionClient.ReadResult.tag(.init(name: "test", payload: .url(url)))
+
+        let testClient = SpeechClient {
+            return true
+        } speak: { _ in }
+
+        let store = TestStore(initialState: ReadResultFeature.State(isAutoSpeechEnabled: false, result: result)) {
+            ReadResultFeature()
+        } withDependencies: {
+            $0.speechClient = testClient
+        }
+
+        await store.send(.onAppear)
     }
 }
 
