@@ -26,6 +26,9 @@ jobs:
         disk-cache: ${{ github.workflow }}
       # Share repository cache between workflows.
         repository-cache: true
+    - uses: swift-actions/setup-swift@v2
+      with:
+          swift-version: "6.0.0"
 
     - name: Run build
       run: bazel build //Labelo:Labelo
