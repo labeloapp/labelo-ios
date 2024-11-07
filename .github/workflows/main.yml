@@ -19,7 +19,6 @@ jobs:
     runs-on: macos-14
     steps:
     - uses: actions/checkout@v4
-    - name: Bazel
     - uses: bazel-contrib/setup-bazel@0.9.1
       with:
         bazelisk-cache: true
