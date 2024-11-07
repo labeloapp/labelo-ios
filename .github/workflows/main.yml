@@ -16,7 +16,7 @@ concurrency:
 jobs:
   mac:
     name: macOS
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
     - uses: actions/checkout@v4
     - uses: bazel-contrib/setup-bazel@0.9.1
@@ -26,9 +26,6 @@ jobs:
         disk-cache: ${{ github.workflow }}
       # Share repository cache between workflows.
         repository-cache: true
-    - uses: swift-actions/setup-swift@v2
-      with:
-          swift-version: '6'
 
     - name: Run build
       run: bazel build //Labelo:Labelo
