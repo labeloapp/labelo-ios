@@ -14,6 +14,14 @@ struct Tag: Codable, Identifiable, Equatable {
             case .data: return "data"
             }
         }
+
+        var stringValue: String {
+            switch self {
+            case .text(let text): return text
+            case .url(let url): return url.absoluteString
+            case .data(let data): return "\(data.count) bytes"
+            }
+        }
     }
 
     let id: UUID

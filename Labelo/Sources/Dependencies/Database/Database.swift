@@ -6,7 +6,7 @@ struct DatabaseClient {
     var getTags: @Sendable () async throws -> [Tag]
     var save: @Sendable ( _ tag: Tag) async throws -> Void
     var delete: @Sendable ( _ tag: Tag) async throws -> Void
-    var getHistory: @Sendable () async throws -> [HistoryEntry]
+    var getHistory: @Sendable (_ for: Tag) async throws -> [HistoryEntry]
     var saveHistoryEntry: @Sendable (_ entry: HistoryEntry) async throws -> Void
 }
 

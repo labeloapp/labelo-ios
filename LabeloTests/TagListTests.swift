@@ -31,7 +31,7 @@ struct TagListTests {
             _ in
         } delete: {
             _ in
-        } getHistory: {
+        } getHistory: { _ in
             return []
         } saveHistoryEntry: {
             _ in
@@ -59,7 +59,7 @@ struct TagListTests {
             _ in
         } delete: {
             _ in
-        } getHistory: {
+        } getHistory: { _ in
             return []
         } saveHistoryEntry: {
             _ in
@@ -95,7 +95,7 @@ struct TagListTests {
             _ in
         } delete: {
             _ in
-        } getHistory: {
+        } getHistory: { _ in
             return []
         } saveHistoryEntry: {
             _ in
@@ -126,7 +126,7 @@ struct TagListTests {
             _ in
         } delete: {
             _ in
-        } getHistory: {
+        } getHistory: { _ in
             return []
         } saveHistoryEntry: {
             _ in
@@ -154,7 +154,7 @@ struct TagListTests {
             _ in
         } delete: {
             _ in
-        } getHistory: {
+        } getHistory: { _ in
             return []
         } saveHistoryEntry: {
             _ in
