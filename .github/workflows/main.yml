@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  mac:
+    name: macOS
+    runs-on: macos-14
+    steps:
+    - uses: actions/checkout@v4
+    - name: Bazel
+    - uses: bazel-contrib/setup-bazel@0.9.1
+      with:
+        bazelisk-cache: true
+      # Store build cache per workflow.
+        disk-cache: ${{ github.workflow }}
+      # Share repository cache between workflows.
+        repository-cache: true
+          
+    - name: Run tests
+      run: bazel test
