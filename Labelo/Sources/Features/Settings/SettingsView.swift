@@ -9,6 +9,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
+                Text("Test")
                 Section("Rate") {
                     LabeledContent("Rate Labelo") {
                         Button {
