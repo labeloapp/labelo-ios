@@ -17,5 +17,9 @@ xcodeproj(
             "//Labelo",
             target_environments = ["simulator", "device"],
         ),
+        top_level_target(
+            "//LabeloTests",
+            target_environments = ["simulator", "device"]
+        )
     ],
 )

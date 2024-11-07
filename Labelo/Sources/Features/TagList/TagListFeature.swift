@@ -27,6 +27,7 @@ struct TagListFeature {
 
     @Dependency(\.database) var database
     @Dependency(\.nfcSession) var nfcSession
+    @Dependency(\.uuid) var uuid
 
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -41,7 +42,7 @@ struct TagListFeature {
                 state.isLoading = false
                 return .none
             case .addButtonTapped:
-                state.createTag = TagCreateFeature.State()
+                state.createTag = TagCreateFeature.State(tag: Tag(id: uuid() , name: "", payload: .text("")))
                 return .none
             case .addTag(let tag):
                 withAnimation {
@@ -66,8 +67,8 @@ struct TagListFeature {
                 }
             case .didTapReadButton:
                 return .run { send in
-                    let string = try await nfcSession.read()
-                    await send(.didRead(string))
+                    let result = try await nfcSession.read()
+                    await send(.didRead(result))
                 }
             case .didRead(let result):
                 state.readResult = ReadResultFeature.State(result: result)
