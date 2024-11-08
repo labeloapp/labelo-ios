@@ -17,6 +17,10 @@ jobs:
   mac:
     name: macOS
     runs-on: macos-15
+
+    env:
+      BUILD_BUDDY_API_KEY: ${{ secrets.BUILD_BUDDY_API_KEY }}
+
     steps:
     - uses: actions/checkout@v4
     - uses: bazel-contrib/setup-bazel@0.9.1
@@ -32,3 +36,4 @@ jobs:
           
     - name: Run tests
       run: bazel test //LabeloTests:LabeloTests 
+
