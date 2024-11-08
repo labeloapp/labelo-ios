@@ -34,6 +34,6 @@ else
   lines+="build --remote_timeout=3600"
 fi
 
-printf '%s\n' "${lines[@]}" > .bazelrc
+printf '%s\n' "${lines[@]}" >> .bazelrc
 
 exec "$bazel_real" "$@"
