@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   mac:
-    name: macOS
+    name: ci
     runs-on: macos-15
 
     env:
