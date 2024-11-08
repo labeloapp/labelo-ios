@@ -37,3 +37,8 @@ swift_deps.from_package(
     swift = "//:Package.swift",
 )
 use_repo(swift_deps, "swift_deps_info", "swiftpkg_swift_composable_architecture")
+
+provisioning_profile_repository = use_extension("@build_bazel_rules_apple//apple:apple.bzl", "provisioning_profile_repository_extension")
+provisioning_profile_repository.setup(
+    fallback_profiles = ":profiles", # Profiles to use if one isn't found locally
+)

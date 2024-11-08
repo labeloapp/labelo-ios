@@ -4,6 +4,14 @@ load(
     "xcodeproj",
 )
 
+filegroup(
+    name = "profiles",
+    srcs = glob([
+        "profiles/*.mobileprovision",
+    ]),
+    visibility = ["//visibility:public"]
+)
+
 # Xcode
 
 xcodeproj(
