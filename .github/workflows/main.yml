@@ -31,9 +31,6 @@ jobs:
       # Share repository cache between workflows.
         repository-cache: true
 
-    - name: Run build
-      run: bazel build //Labelo:Labelo
-          
     - name: Run tests
-      run: bazel test //LabeloTests:LabeloTests 
+      run: bazel test --config=CI //LabeloTests:LabeloTests
 

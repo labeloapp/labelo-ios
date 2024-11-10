@@ -10,6 +10,9 @@ common --spawn_strategy=worker,local
 # variables like `PATH` sneak into the build, which can cause massive cache misses when they change.
 build                       --incompatible_strict_action_env
 
+# We Disallow empty lists of files
+build --incompatible_disallow_empty_glob
+
 # Use all available CPU cores for workers.
 build                       --worker_max_instances=HOST_CPUS
 
@@ -21,8 +24,6 @@ common --noremote_upload_local_results
 common:upload --disk_cache=
 common:upload --remote_upload_local_results
 
-# TODO: Add auth for build buddy
-
 # No need to cache these types of artifacts
 common --modify_execution_info=^(AppleLipo|BitcodeSymbolsCopy|BundleApp|BundleTreeApp|DsymDwarf|DsymLipo|GenerateAppleSymbolsFile|ObjcBinarySymbolStrip|CppArchive|CppLink|ObjcLink|ProcessAndSign|SignBinary|SwiftArchive|SwiftStdlibCopy)$=+no-remote,^(BundleResources|ImportedDynamicFrameworkProcessor)$=+no-remote-exec
 
@@ -30,10 +31,21 @@ common --modify_execution_info=^(AppleLipo|BitcodeSymbolsCopy|BundleApp|BundleTr
 
 common:ci --config=upload
 
+common:CI --bes_results_url=https://app.buildbuddy.io/invocation/
+common:ci --bes_backend=grpcs://remote.buildbuddy.io
+
+
 # Cache warming
 
 common:warming --config=upload
 common:warming --remote_download_minimal
 
+# Testing 
+
+# `bazel test` tries to build everything also by default, so we skip that.
+test --build_tests_only
+# Show detailed errors for test failures
+test --test_output=errors
+
 # Load Xcode bazelrc file.
-xcode.bazelrc
+import xcode.bazelrc
