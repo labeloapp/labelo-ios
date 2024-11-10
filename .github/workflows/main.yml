@@ -26,14 +26,9 @@ jobs:
     - uses: bazel-contrib/setup-bazel@0.9.1
       with:
         bazelisk-cache: true
-      # Store build cache per workflow.
-        disk-cache: ${{ github.workflow }}
       # Share repository cache between workflows.
         repository-cache: true
 
-    - name: Run build
-      run: bazel build //Labelo:Labelo
-          
     - name: Run tests
-      run: bazel test //LabeloTests:LabeloTests 
+      run: bazel test --config=ci //Labelo:Tests
 

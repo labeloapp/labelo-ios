@@ -1,9 +1,9 @@
-load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application")
 load("@build_bazel_rules_apple//apple:apple.bzl", "local_provisioning_profile")
+load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application", "ios_unit_test")
 load("@build_bazel_rules_apple//apple:versioning.bzl", "apple_bundle_version")
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+load("@rules_xcodeproj//xcodeproj:defs.bzl", "xcode_provisioning_profile")
 load("//tools:shared.bzl", "app_info", "versions")
-load( "@rules_xcodeproj//xcodeproj:defs.bzl", "xcode_provisioning_profile",)
 
 # Version
 apple_bundle_version(
@@ -25,9 +25,9 @@ swift_library(
 )
 
 xcode_provisioning_profile(
-   name = "xcode_profile",
-   managed_by_xcode = True,
-   provisioning_profile = ":provisioning_profile",
+    name = "xcode_profile",
+    managed_by_xcode = True,
+    provisioning_profile = ":provisioning_profile",
 )
 
 local_provisioning_profile(
@@ -43,8 +43,8 @@ ios_application(
     app_icons = glob(["Assets/Assets.xcassets/AppIcon.appiconset/**"]),
     bundle_id = app_info.bundle_id,
     bundle_name = app_info.bundle_name,
-    executable_name = app_info.executable_name,
     entitlements = "Labelo.entitlements",
+    executable_name = app_info.executable_name,
     families = [
         "iphone",
         "ipad",
@@ -65,6 +65,26 @@ ios_application(
         "//:__subpackages__",
         "@rules_xcodeproj//xcodeproj:generated",
     ],
+    deps = [
+        ":labelo.library",
+    ],
+)
+
+# Tests
+
+ios_unit_test(
+    name = "Tests",
+    bundle_id = "app.labelo.LabeloTests",
+    minimum_os_version = "18.0",
+    visibility = ["@rules_xcodeproj//xcodeproj:generated"],
+    deps = [":Tests.library"],
+)
+
+swift_library(
+    name = "Tests.library",
+    testonly = True,
+    srcs = glob(["Tests/**/*.swift"]),
+    module_name = "LabeloTests",
     deps = [
         ":labelo.library",
     ],
