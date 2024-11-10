@@ -20,12 +20,12 @@ if [[ $OSTYPE == darwin* ]]; then
 fi
 
 # Add remote cache if API key is present
-
+lines=()
 if [ -z $BUILD_BUDDY_API_KEY ]; then
   echo "BUILD BUDDY API Key not found"
 else
   echo "Found BUILD BUDDY API Key, adding remote cache"
-    bazelrc_lines+=("--remote_header=x-buildbuddy-api-key=$BUILD_BUDDY_API_KEY")
+    lines+="--remote_header=x-buildbuddy-api-key=$BUILD_BUDDY_API_KEY"
 fi
 
 exec "$bazel_real" $@ $lines
