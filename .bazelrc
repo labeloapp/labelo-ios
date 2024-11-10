@@ -30,7 +30,8 @@ common --modify_execution_info=^(AppleLipo|BitcodeSymbolsCopy|BundleApp|BundleTr
 # CI
 
 common:ci --config=upload
-
+common:ci --color=yes
+common:ci --announce_rc
 common:CI --bes_results_url=https://app.buildbuddy.io/invocation/
 common:ci --bes_backend=grpcs://remote.buildbuddy.io
 
