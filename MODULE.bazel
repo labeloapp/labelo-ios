@@ -2,30 +2,31 @@ bazel_dep(name = "apple_support", version = "1.17.1")
 bazel_dep(name = "bazel_skylib", version = "1.5.0")
 bazel_dep(name = "rules_xcodeproj", version = "2.7.0")
 
-
 # Needed because of: https://github.com/cgrindel/rules_swift_package_manager/issues/892
 
-single_version_override(module_name = "rules_swift_package_manager",
-patches = [":patches/rules_swift_package_manager-set-platform-version.patch"],
-patch_strip = 1
+single_version_override(
+    module_name = "rules_swift_package_manager",
+    patch_strip = 1,
+    patches = [":patches/rules_swift_package_manager-set-platform-version.patch"],
 )
 
 bazel_dep(name = "rules_swift_package_manager", version = "0.39.0")
 
-single_version_override(module_name = "rules_swift",
-patches = [":patches/rules_swift-set-platform-version.patch"],
-patch_strip = 1
+single_version_override(
+    module_name = "rules_swift",
+    patch_strip = 1,
+    patches = [":patches/rules_swift-set-platform-version.patch"],
 )
 
 bazel_dep(name = "rules_swift", version = "2.1.1", repo_name = "build_bazel_rules_swift")
 
-single_version_override(module_name = "rules_apple",
-patches = [":patches/provisioning_profiles.patch"],
-patch_strip = 1
+single_version_override(
+    module_name = "rules_apple",
+    patch_strip = 1,
+    patches = [":patches/provisioning_profiles.patch"],
 )
 
 bazel_dep(name = "rules_apple", version = "3.3.0", repo_name = "build_bazel_rules_apple")
-
 
 swift_deps = use_extension(
     "@rules_swift_package_manager//:extensions.bzl",
@@ -40,5 +41,5 @@ use_repo(swift_deps, "swift_deps_info", "swiftpkg_swift_composable_architecture"
 
 provisioning_profile_repository = use_extension("@build_bazel_rules_apple//apple:apple.bzl", "provisioning_profile_repository_extension")
 provisioning_profile_repository.setup(
-    fallback_profiles = ":profiles", # Profiles to use if one isn't found locally
+    fallback_profiles = ":profiles",  # Profiles to use if one isn't found locally
 )
