@@ -2,6 +2,8 @@
 startup --digest_function=blake3
 common --cache_computed_file_digests=500000
 
+common --flag_alias=ios_device=@rules_apple//apple/build_settings:ios_device
+
 # We disable sandboxing as it is slow on Darwin.
 common --noworker_sandboxing
 common --spawn_strategy=worker,local

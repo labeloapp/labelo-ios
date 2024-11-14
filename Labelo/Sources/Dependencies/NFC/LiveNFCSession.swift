@@ -230,23 +230,34 @@ extension LiveNFCSession: NFCTagReaderSessionDelegate {
         session.connect(to: tag) { [weak self] error in
             guard let self else { return }
 
-            if error != nil {
-                session.invalidate(errorMessage: "Connection error. Please try again.")
-                self.readerContinuation?.resume(throwing: NFCSessionClientError.connectionError)
-                self.readerContinuation = nil
+            if let error  {
+                handleError(session: session, error: error)
                 return
             }
 
-            ndefTag.queryNDEFStatus { status, capacity, error in
-                guard status != .notSupported else {
-                    session.invalidate(errorMessage: "Tag not valid.")
-                    self.readerContinuation?.resume(throwing: NFCSessionClientError.tagIsNotValid)
-                    self.readerContinuation = nil
+            ndefTag.queryNDEFStatus { [weak self] status, capacity, error in
+
+                if let error {
+                    self?.handleError(session: session, error: error)
                     return
                 }
 
-                ndefTag.readNDEF { message, error in
-                    guard error == nil, let message, let record = message.records.first else {
+                guard status != .notSupported else {
+                    session.invalidate(errorMessage: "Tag not valid.")
+                    self?.readerContinuation?.resume(throwing: NFCSessionClientError.tagIsNotValid)
+                    self?.readerContinuation = nil
+                    return
+                }
+
+                ndefTag.readNDEF { [weak self] message, error in
+                    guard let self else { return }
+
+                    if let error {
+                        self.handleError(session: session, error: error)
+                        return
+                    }
+
+                    guard let message, let record = message.records.first else {
                         session.invalidate(errorMessage: "Read error. Please try again.")
                         self.readerContinuation?.resume(throwing: NFCSessionClientError.readError)
                         self.readerContinuation = nil
@@ -267,7 +278,7 @@ extension LiveNFCSession: NFCTagReaderSessionDelegate {
                         let decoder = JSONDecoder()
 
                         guard let tag = try? decoder.decode(Tag.self, from: record.payload) else {
-                            session.invalidate(errorMessage: "Read error. Please try again.")
+                            session.invalidate(errorMessage: "Coulnd not decode tag in Labelo supported format.")
                             self.readerContinuation?.resume(throwing: NFCSessionClientError.readError)
                             self.readerContinuation = nil
                             return
@@ -289,6 +300,22 @@ extension LiveNFCSession: NFCTagReaderSessionDelegate {
         if let readerContinuation {
             readerContinuation.resume(throwing: NFCSessionClientError.failed(error))
         }
+    }
+
+    private func handleError(session: NFCTagReaderSession, error: any Error) {
+        if let nfcError = error as? NFCReaderError {
+            if nfcError.code == NFCReaderError.Code.ndefReaderSessionErrorZeroLengthMessage {
+                self.readerContinuation?.resume(returning: .empty)
+                self.readerContinuation = nil
+                return
+            }
+            session.invalidate(errorMessage: nfcError.localizedDescription)
+            self.readerContinuation?.resume(throwing: NFCSessionClientError.failed(nfcError))
+        } else {
+            session.invalidate(errorMessage: "Read error. Please try again.")
+            self.readerContinuation?.resume(throwing: NFCSessionClientError.readError)
+        }
+        self.readerContinuation = nil
     }
 }
 

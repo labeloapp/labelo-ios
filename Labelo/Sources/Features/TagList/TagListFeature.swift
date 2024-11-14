@@ -9,6 +9,7 @@ struct TagListFeature {
         var isLoading: Bool = false
         @Presents var createTag: TagCreateFeature.State?
         @Presents var readResult: ReadResultFeature.State?
+        @Presents var alert: AlertState<Action.Alert>?
         var path = StackState<TagDetailsFeature.State>()
     }
 
@@ -23,6 +24,13 @@ struct TagListFeature {
         case delete(Tag)
         case didTapReadButton
         case didRead(NFCSessionClient.ReadResult)
+        case alert(PresentationAction<Alert>)
+        case showRetryAlert(_ error: (any Error)?)
+
+        enum Alert: Equatable {
+            case retry
+            case dismiss
+        }
     }
 
     @Dependency(\.database) var database
@@ -30,7 +38,9 @@ struct TagListFeature {
     @Dependency(\.uuid) var uuid
 
     var body: some Reducer<State, Action> {
-        Reduce { state, action in
+        Reduce {
+            state,
+            action in
             switch action {
             case .getTags:
                 return .run { send in
@@ -42,7 +52,7 @@ struct TagListFeature {
                 state.isLoading = false
                 return .none
             case .addButtonTapped:
-                state.createTag = TagCreateFeature.State(tag: Tag(id: uuid() , name: "", payload: .text("")))
+                state.createTag = TagCreateFeature.State(tag: Tag(id: uuid() , name: "Tag \(state.tags.count + 1)", payload: .text("This text will be written to the tag")))
                 return .none
             case .addTag(let tag):
                 withAnimation {
@@ -67,23 +77,41 @@ struct TagListFeature {
                 }
             case .didTapReadButton:
                 return .run { send in
-                    let result = try await nfcSession.read()
-                    await send(.didRead(result))
+                    do {
+                        let result = try await nfcSession.read()
+                        await send(.didRead(result))
+                    } catch NFCSessionClientError.readError {
+                        await send(.showRetryAlert(nil))
+                    } catch NFCSessionClientError.failed(let error) {
+                        await send(.showRetryAlert(error))
+                    }
                 }
             case .didRead(let result):
                 state.readResult = ReadResultFeature.State(result: result)
-
+                
                 if case .tag(let tag) = result {
                     return .run { _ in
                         let entry = HistoryEntry(tag: tag, readAt: .now)
                         try await database.saveHistoryEntry(entry)
                     }
                 }
-
+                
                 return .none
             case .readResult:
                 return .none
             case .path:
+                return .none
+            case .alert(.presented(.retry)):
+                return .run { send in
+                    await send(.didTapReadButton)
+                }
+            case .alert(.presented(.dismiss)):
+                state.alert = nil
+                return .none
+            case .alert:
+                return .none
+            case .showRetryAlert(let error):
+                state.alert = createRetryAlertState(error)
                 return .none
             }
         }
@@ -93,8 +121,31 @@ struct TagListFeature {
         .ifLet(\.$readResult, action: \.readResult) {
             ReadResultFeature()
         }
+        .ifLet(\.$alert, action: \.alert)
         .forEach(\.path, action: \.path) {
             TagDetailsFeature()
+        }
+    }
+
+    private func createRetryAlertState(_ error: (any Error)?) -> AlertState<Action.Alert> {
+        let message: String
+        if let error {
+            message = "Reading failed \(error.localizedDescription). \nTry again?"
+        } else {
+            message = "Reading failed. \nTry again?"
+        }
+
+        return AlertState {
+            TextState("Error reading the tag")
+        } actions: {
+            ButtonState(action: .retry) {
+                TextState("Retry")
+            }
+            ButtonState(action: .dismiss) {
+                TextState("Cancel")
+            }
+        } message: {
+            TextState(message)
         }
     }
 }

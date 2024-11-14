@@ -33,10 +33,12 @@ struct TagListView: View {
             .onAppear {
                 store.send(.getTags)
             }
+            .alert($store.scope(state: \.alert, action: \.alert))
             .toolbar {
                 Button("", systemImage: "plus") {
                     store.send(.addButtonTapped)
                 }
+                .accessibilityLabel(Text("Create a new Tag"))
             }
             .sheet(item: $store.scope(state: \.createTag, action: \.createTag)) { tagCreateStore in
                 NavigationStack {

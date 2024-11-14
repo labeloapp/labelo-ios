@@ -28,4 +28,4 @@ else
     lines+="--remote_header=x-buildbuddy-api-key=$BUILD_BUDDY_API_KEY"
 fi
 
-exec "$bazel_real" $@ $lines
+exec "$bazel_real" "$@" "$lines"

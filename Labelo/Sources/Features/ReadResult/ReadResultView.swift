@@ -40,6 +40,7 @@ struct ReadResultView: View {
                         .frame(width: 22, height: 22)
                 }
                 .disabled(store.isSpeaking)
+                .accessibilityLabel(Text("Speaks out the tag's payload"))
             }
         }
     }
