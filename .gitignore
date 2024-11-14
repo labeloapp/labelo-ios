@@ -2,6 +2,8 @@
 
 .env
 
+/cert
+Labelo/prod_provision.mobileprovision
 /bazel-*
 /user.bazelrc
 /MODULE.bazel.lock
