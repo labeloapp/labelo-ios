@@ -27,7 +27,9 @@ struct ReadResultFeature {
                 if state.isAutoSpeechEnabled {
                     return .send(.didTapSpeakButton)
                 }
-                return .none
+                return .run { _ in
+                    _ = try await speechClient.requestAuthorization()
+                }
             case .open(let url):
                 return .run { _ in
                     await openURL(url)

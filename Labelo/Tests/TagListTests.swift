@@ -17,7 +17,7 @@ struct TagListTests {
         }
 
         await store.send(.addButtonTapped) {
-            $0.$createTag = PresentationState(wrappedValue: TagCreateFeature.State(tag: .init(id: uuid, name: "", payload: .text(""))))
+            $0.$createTag = PresentationState(wrappedValue: TagCreateFeature.State(tag: .init(id: uuid, name: "Tag 1", payload: .text("This text will be written to the tag"))))
         }
     }
 
@@ -74,7 +74,7 @@ struct TagListTests {
             $0.uuid = .constant(uuid)
         }
         await store.send(\.addButtonTapped) {
-            $0.createTag = TagCreateFeature.State(tag: .init(id: uuid, name: "", payload: .text("")))
+            $0.createTag = TagCreateFeature.State(tag: .init(id: uuid, name: "Tag 1", payload: .text("This text will be written to the tag")))
         }
         await store.send(.createTag(.presented(.delegate(.saveTag(tag))))) {
             $0.createTag = nil
@@ -109,7 +109,7 @@ struct TagListTests {
             $0.uuid = .constant(uuid)
         }
         await store.send(\.addButtonTapped) {
-            $0.createTag = TagCreateFeature.State(tag: .init(id: uuid, name: "", payload: .text("")))
+            $0.createTag = TagCreateFeature.State(tag: .init(id: uuid, name: "Tag 1", payload: .text("This text will be written to the tag")))
         }
         await store.send(.createTag(.presented(.delegate(.cancel)))) {
             $0.createTag = nil
