@@ -3,6 +3,7 @@ load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application", "ios_unit_tes
 load("@build_bazel_rules_apple//apple:versioning.bzl", "apple_bundle_version")
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 load("@rules_xcodeproj//xcodeproj:defs.bzl", "xcode_provisioning_profile")
+load("@build_bazel_rules_apple//apple:xcarchive.bzl", "xcarchive")
 load("//tools:shared.bzl", "app_info", "versions")
 
 # Version
@@ -34,6 +35,12 @@ local_provisioning_profile(
     name = "provisioning_profile",
     profile_name = "iOS Labelo Provisioning Profile",
     team_id = "RK3RLP5S33",
+)
+
+local_provisioning_profile(
+    name = "release_provisioning_profile",
+    profile_name = "Labelo iOS App Store",
+    team_id = "RK3RLP5S33"
 )
 
 # Packaging
@@ -88,4 +95,45 @@ swift_library(
     deps = [
         ":labelo.library",
     ],
+)
+
+# Release
+
+ios_application(
+    name = "LabeloRelease",
+    app_icons = glob(["Assets/Assets.xcassets/AppIcon.appiconset/**"]),
+    bundle_id = app_info.bundle_id,
+    bundle_name = app_info.bundle_name,
+    entitlements = "Labelo.entitlements",
+    executable_name = app_info.executable_name,
+    families = [
+        "iphone",
+        "ipad",
+    ],
+    infoplists = ["Resources/Info.plist"],
+    minimum_os_version = versions.minimum_ios_version,
+    provisioning_profile = "prod_provision.mobileprovision",
+    resources = glob(
+        [
+            "Assets/Assets.xcassets/**",
+        ],
+        exclude = ["Assets/Assets.xcassets/AppIcon.appiconset/**"],
+    ),
+    # Add localizable assets here.
+    # strings = glob(["*.lproj/Localizable.strings"]),
+    version = ":Version",
+    visibility = [
+        "//:__subpackages__",
+        "@rules_xcodeproj//xcodeproj:generated",
+    ],
+    deps = [
+        ":labelo.library",
+    ],
+)
+
+# Archive
+
+xcarchive(
+    name = "Labelo.xcarchive",
+    bundle = ":Labelo",
 )
