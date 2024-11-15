@@ -1,4 +1,5 @@
 import Foundation
+import AVFoundation
 import Speech
 
 actor Speech {
@@ -6,11 +7,12 @@ actor Speech {
 
     init() {
         self.synthesizer = AVSpeechSynthesizer()
+        self.synthesizer.usesApplicationAudioSession = false
     }
 
     func speak(_ text: String) async throws {
         let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.prefersAssistiveTechnologySettings = true
         synthesizer.speak(utterance)
     }
 }
