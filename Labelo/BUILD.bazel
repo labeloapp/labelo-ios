@@ -101,7 +101,7 @@ swift_library(
 # Version
 apple_bundle_version(
     name = "release_version",
-    build_version = "0.0.4,
+    build_version = "0.0.4",
     short_version_string = "1.0",
 )
 
