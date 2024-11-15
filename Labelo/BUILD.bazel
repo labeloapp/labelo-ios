@@ -101,7 +101,11 @@ swift_library(
 # Version
 apple_bundle_version(
     name = "release_version",
+<<<<<<< HEAD
     build_version = "0.0.3",
+=======
+    build_version = "0.0.4,
+>>>>>>> 496298d (iPad fix)
     short_version_string = "1.0",
 )
 
