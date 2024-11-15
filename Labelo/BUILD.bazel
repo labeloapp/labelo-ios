@@ -98,6 +98,12 @@ swift_library(
 )
 
 # Release
+# Version
+apple_bundle_version(
+    name = "release_version",
+    build_version = "0.0.3",
+    short_version_string = "1.0",
+)
 
 ios_application(
     name = "LabeloRelease",
@@ -121,7 +127,7 @@ ios_application(
     ),
     # Add localizable assets here.
     # strings = glob(["*.lproj/Localizable.strings"]),
-    version = ":Version",
+    version = ":release_version",
     visibility = [
         "//:__subpackages__",
         "@rules_xcodeproj//xcodeproj:generated",
