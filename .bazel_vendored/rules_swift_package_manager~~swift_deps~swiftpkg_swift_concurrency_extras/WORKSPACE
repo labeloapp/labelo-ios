@@ -1,0 +1,1 @@
+workspace(name = "rules_swift_package_manager~~swift_deps~swiftpkg_swift_concurrency_extras")

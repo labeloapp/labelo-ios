@@ -1,0 +1,725 @@
+{
+  "dependencies" : [
+
+  ],
+  "manifest_display_name" : "swift-collections",
+  "name" : "swift-collections",
+  "path" : "/private/var/tmp/_bazel_adincebic/d542141b6540f70d4755466fcd988e58/external/rules_swift_package_manager~~swift_deps~swiftpkg_swift_collections",
+  "platforms" : [
+
+  ],
+  "products" : [
+    {
+      "name" : "BitCollections",
+      "targets" : [
+        "BitCollections"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "DequeModule",
+      "targets" : [
+        "DequeModule"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "HashTreeCollections",
+      "targets" : [
+        "HashTreeCollections"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "HeapModule",
+      "targets" : [
+        "HeapModule"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "OrderedCollections",
+      "targets" : [
+        "OrderedCollections"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "_RopeModule",
+      "targets" : [
+        "_RopeModule"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "Collections",
+      "targets" : [
+        "Collections"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    }
+  ],
+  "targets" : [
+    {
+      "c99name" : "_RopeModule",
+      "module_type" : "SwiftTarget",
+      "name" : "_RopeModule",
+      "path" : "Sources/RopeModule",
+      "product_memberships" : [
+        "_RopeModule",
+        "Collections"
+      ],
+      "sources" : [
+        "BigString/Basics/BigString+Builder.swift",
+        "BigString/Basics/BigString+Contents.swift",
+        "BigString/Basics/BigString+Debugging.swift",
+        "BigString/Basics/BigString+Index.swift",
+        "BigString/Basics/BigString+Ingester.swift",
+        "BigString/Basics/BigString+Invariants.swift",
+        "BigString/Basics/BigString+Iterators.swift",
+        "BigString/Basics/BigString+Metrics.swift",
+        "BigString/Basics/BigString+Summary.swift",
+        "BigString/Basics/BigString.swift",
+        "BigString/Chunk/BigString+Chunk+Append and Insert.swift",
+        "BigString/Chunk/BigString+Chunk+Breaks.swift",
+        "BigString/Chunk/BigString+Chunk+Counts.swift",
+        "BigString/Chunk/BigString+Chunk+Description.swift",
+        "BigString/Chunk/BigString+Chunk+Indexing by Characters.swift",
+        "BigString/Chunk/BigString+Chunk+Indexing by UTF16.swift",
+        "BigString/Chunk/BigString+Chunk+RopeElement.swift",
+        "BigString/Chunk/BigString+Chunk+Splitting.swift",
+        "BigString/Chunk/BigString+Chunk.swift",
+        "BigString/Conformances/BigString+BidirectionalCollection.swift",
+        "BigString/Conformances/BigString+Comparable.swift",
+        "BigString/Conformances/BigString+CustomDebugStringConvertible.swift",
+        "BigString/Conformances/BigString+CustomStringConvertible.swift",
+        "BigString/Conformances/BigString+Equatable.swift",
+        "BigString/Conformances/BigString+ExpressibleByStringLiteral.swift",
+        "BigString/Conformances/BigString+Hashing.swift",
+        "BigString/Conformances/BigString+LosslessStringConvertible.swift",
+        "BigString/Conformances/BigString+RangeReplaceableCollection.swift",
+        "BigString/Conformances/BigString+Sequence.swift",
+        "BigString/Conformances/BigString+TextOutputStream.swift",
+        "BigString/Operations/BigString+Append.swift",
+        "BigString/Operations/BigString+Initializers.swift",
+        "BigString/Operations/BigString+Insert.swift",
+        "BigString/Operations/BigString+Managing Breaks.swift",
+        "BigString/Operations/BigString+RemoveSubrange.swift",
+        "BigString/Operations/BigString+ReplaceSubrange.swift",
+        "BigString/Operations/BigString+Split.swift",
+        "BigString/Operations/Range+BigString.swift",
+        "BigString/Views/BigString+UTF16View.swift",
+        "BigString/Views/BigString+UTF8View.swift",
+        "BigString/Views/BigString+UnicodeScalarView.swift",
+        "BigString/Views/BigSubstring+UTF16View.swift",
+        "BigString/Views/BigSubstring+UTF8View.swift",
+        "BigString/Views/BigSubstring+UnicodeScalarView.swift",
+        "BigString/Views/BigSubstring.swift",
+        "Rope/Basics/Rope+Builder.swift",
+        "Rope/Basics/Rope+Debugging.swift",
+        "Rope/Basics/Rope+Invariants.swift",
+        "Rope/Basics/Rope+_Node.swift",
+        "Rope/Basics/Rope+_Storage.swift",
+        "Rope/Basics/Rope+_UnmanagedLeaf.swift",
+        "Rope/Basics/Rope+_UnsafeHandle.swift",
+        "Rope/Basics/Rope.swift",
+        "Rope/Basics/RopeElement.swift",
+        "Rope/Basics/RopeMetric.swift",
+        "Rope/Basics/RopeSummary.swift",
+        "Rope/Basics/_RopeItem.swift",
+        "Rope/Basics/_RopePath.swift",
+        "Rope/Basics/_RopeVersion.swift",
+        "Rope/Conformances/Rope+Collection.swift",
+        "Rope/Conformances/Rope+Index.swift",
+        "Rope/Conformances/Rope+Sequence.swift",
+        "Rope/Operations/Rope+Append.swift",
+        "Rope/Operations/Rope+Extract.swift",
+        "Rope/Operations/Rope+Find.swift",
+        "Rope/Operations/Rope+ForEachWhile.swift",
+        "Rope/Operations/Rope+Insert.swift",
+        "Rope/Operations/Rope+Join.swift",
+        "Rope/Operations/Rope+MutatingForEach.swift",
+        "Rope/Operations/Rope+Remove.swift",
+        "Rope/Operations/Rope+RemoveSubrange.swift",
+        "Rope/Operations/Rope+Split.swift",
+        "Utilities/Optional Utilities.swift",
+        "Utilities/String Utilities.swift",
+        "Utilities/String.Index+ABI.swift",
+        "Utilities/_CharacterRecognizer.swift"
+      ],
+      "target_dependencies" : [
+        "InternalCollectionsUtilities"
+      ],
+      "type" : "library"
+    },
+    {
+      "c99name" : "_CollectionsTestSupport",
+      "module_type" : "SwiftTarget",
+      "name" : "_CollectionsTestSupport",
+      "path" : "Tests/_CollectionsTestSupport",
+      "sources" : [
+        "AssertionContexts/Assertions.swift",
+        "AssertionContexts/CollectionTestCase.swift",
+        "AssertionContexts/Combinatorics.swift",
+        "AssertionContexts/TestContext.swift",
+        "ConformanceCheckers/CheckBidirectionalCollection.swift",
+        "ConformanceCheckers/CheckCollection.swift",
+        "ConformanceCheckers/CheckComparable.swift",
+        "ConformanceCheckers/CheckEquatable.swift",
+        "ConformanceCheckers/CheckHashable.swift",
+        "ConformanceCheckers/CheckSequence.swift",
+        "MinimalTypes/MinimalBidirectionalCollection.swift",
+        "MinimalTypes/MinimalCollection.swift",
+        "MinimalTypes/MinimalDecoder.swift",
+        "MinimalTypes/MinimalEncoder.swift",
+        "MinimalTypes/MinimalIndex.swift",
+        "MinimalTypes/MinimalIterator.swift",
+        "MinimalTypes/MinimalMutableRandomAccessCollection.swift",
+        "MinimalTypes/MinimalMutableRangeReplaceableRandomAccessCollection.swift",
+        "MinimalTypes/MinimalRandomAccessCollection.swift",
+        "MinimalTypes/MinimalRangeReplaceableRandomAccessCollection.swift",
+        "MinimalTypes/MinimalSequence.swift",
+        "MinimalTypes/ResettableValue.swift",
+        "MinimalTypes/_CollectionState.swift",
+        "MinimalTypes/_MinimalCollectionCore.swift",
+        "Utilities/AllOnesRandomNumberGenerator.swift",
+        "Utilities/Box.swift",
+        "Utilities/DictionaryAPIChecker.swift",
+        "Utilities/HashableBox.swift",
+        "Utilities/IndexRangeCollection.swift",
+        "Utilities/Integer Square Root.swift",
+        "Utilities/LifetimeTracked.swift",
+        "Utilities/LifetimeTracker.swift",
+        "Utilities/RandomStableSample.swift",
+        "Utilities/RepeatableRandomNumberGenerator.swift",
+        "Utilities/SetAPIChecker.swift",
+        "Utilities/SortedCollectionAPIChecker.swift",
+        "Utilities/StringConvertibleValue.swift"
+      ],
+      "target_dependencies" : [
+        "InternalCollectionsUtilities"
+      ],
+      "type" : "library"
+    },
+    {
+      "c99name" : "RopeModuleTests",
+      "module_type" : "SwiftTarget",
+      "name" : "RopeModuleTests",
+      "path" : "Tests/RopeModuleTests",
+      "sources" : [
+        "Availability.swift",
+        "SampleStrings.swift",
+        "TestBigString.swift",
+        "TestRope.swift"
+      ],
+      "target_dependencies" : [
+        "_RopeModule",
+        "_CollectionsTestSupport"
+      ],
+      "type" : "test"
+    },
+    {
+      "c99name" : "OrderedCollectionsTests",
+      "module_type" : "SwiftTarget",
+      "name" : "OrderedCollectionsTests",
+      "path" : "Tests/OrderedCollectionsTests",
+      "sources" : [
+        "HashTable/HashTableTests.swift",
+        "OrderedDictionary/OrderedDictionary Tests.swift",
+        "OrderedDictionary/OrderedDictionary Utils.swift",
+        "OrderedDictionary/OrderedDictionary+Elements Tests.swift",
+        "OrderedDictionary/OrderedDictionary+Values Tests.swift",
+        "OrderedSet/OrderedSet Diffing Tests.swift",
+        "OrderedSet/OrderedSet.UnorderedView Tests.swift",
+        "OrderedSet/OrderedSetInternals.swift",
+        "OrderedSet/OrderedSetTests.swift",
+        "OrderedSet/RandomAccessCollection+Extras.swift"
+      ],
+      "target_dependencies" : [
+        "OrderedCollections",
+        "_CollectionsTestSupport"
+      ],
+      "type" : "test"
+    },
+    {
+      "c99name" : "OrderedCollections",
+      "module_type" : "SwiftTarget",
+      "name" : "OrderedCollections",
+      "path" : "Sources/OrderedCollections",
+      "product_memberships" : [
+        "OrderedCollections",
+        "Collections"
+      ],
+      "sources" : [
+        "HashTable/_HashTable+Bucket.swift",
+        "HashTable/_HashTable+BucketIterator.swift",
+        "HashTable/_HashTable+Constants.swift",
+        "HashTable/_HashTable+CustomStringConvertible.swift",
+        "HashTable/_HashTable+Testing.swift",
+        "HashTable/_HashTable+UnsafeHandle.swift",
+        "HashTable/_HashTable.swift",
+        "HashTable/_Hashtable+Header.swift",
+        "OrderedDictionary/OrderedDictionary+Codable.swift",
+        "OrderedDictionary/OrderedDictionary+CustomReflectable.swift",
+        "OrderedDictionary/OrderedDictionary+Deprecations.swift",
+        "OrderedDictionary/OrderedDictionary+Descriptions.swift",
+        "OrderedDictionary/OrderedDictionary+Elements.SubSequence.swift",
+        "OrderedDictionary/OrderedDictionary+Elements.swift",
+        "OrderedDictionary/OrderedDictionary+Equatable.swift",
+        "OrderedDictionary/OrderedDictionary+ExpressibleByDictionaryLiteral.swift",
+        "OrderedDictionary/OrderedDictionary+Hashable.swift",
+        "OrderedDictionary/OrderedDictionary+Initializers.swift",
+        "OrderedDictionary/OrderedDictionary+Invariants.swift",
+        "OrderedDictionary/OrderedDictionary+Partial MutableCollection.swift",
+        "OrderedDictionary/OrderedDictionary+Partial RangeReplaceableCollection.swift",
+        "OrderedDictionary/OrderedDictionary+Sendable.swift",
+        "OrderedDictionary/OrderedDictionary+Sequence.swift",
+        "OrderedDictionary/OrderedDictionary+Values.swift",
+        "OrderedDictionary/OrderedDictionary.swift",
+        "OrderedSet/OrderedSet+Codable.swift",
+        "OrderedSet/OrderedSet+CustomReflectable.swift",
+        "OrderedSet/OrderedSet+Descriptions.swift",
+        "OrderedSet/OrderedSet+Diffing.swift",
+        "OrderedSet/OrderedSet+Equatable.swift",
+        "OrderedSet/OrderedSet+ExpressibleByArrayLiteral.swift",
+        "OrderedSet/OrderedSet+Hashable.swift",
+        "OrderedSet/OrderedSet+Initializers.swift",
+        "OrderedSet/OrderedSet+Insertions.swift",
+        "OrderedSet/OrderedSet+Invariants.swift",
+        "OrderedSet/OrderedSet+Partial MutableCollection.swift",
+        "OrderedSet/OrderedSet+Partial RangeReplaceableCollection.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra formIntersection.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra formSymmetricDifference.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra formUnion.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra intersection.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra isDisjoint.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra isEqualSet.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra isStrictSubset.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra isStrictSuperset.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra isSubset.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra isSuperset.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra subtract.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra subtracting.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra symmetricDifference.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra union.swift",
+        "OrderedSet/OrderedSet+Partial SetAlgebra+Basics.swift",
+        "OrderedSet/OrderedSet+RandomAccessCollection.swift",
+        "OrderedSet/OrderedSet+ReserveCapacity.swift",
+        "OrderedSet/OrderedSet+Sendable.swift",
+        "OrderedSet/OrderedSet+SubSequence.swift",
+        "OrderedSet/OrderedSet+Testing.swift",
+        "OrderedSet/OrderedSet+UnorderedView.swift",
+        "OrderedSet/OrderedSet+UnstableInternals.swift",
+        "OrderedSet/OrderedSet.swift",
+        "Utilities/_UnsafeBitset.swift"
+      ],
+      "target_dependencies" : [
+        "InternalCollectionsUtilities"
+      ],
+      "type" : "library"
+    },
+    {
+      "c99name" : "InternalCollectionsUtilities",
+      "module_type" : "SwiftTarget",
+      "name" : "InternalCollectionsUtilities",
+      "path" : "Sources/InternalCollectionsUtilities",
+      "product_memberships" : [
+        "BitCollections",
+        "DequeModule",
+        "HashTreeCollections",
+        "HeapModule",
+        "OrderedCollections",
+        "_RopeModule",
+        "Collections"
+      ],
+      "sources" : [
+        "Compatibility/autogenerated/UnsafeMutableBufferPointer+SE-0370.swift",
+        "Compatibility/autogenerated/UnsafeMutablePointer+SE-0370.swift",
+        "Compatibility/autogenerated/UnsafeRawPointer extensions.swift",
+        "IntegerTricks/autogenerated/FixedWidthInteger+roundUpToPowerOfTwo.swift",
+        "IntegerTricks/autogenerated/Integer rank.swift",
+        "IntegerTricks/autogenerated/UInt+first and last set bit.swift",
+        "IntegerTricks/autogenerated/UInt+reversed.swift",
+        "UnsafeBitSet/autogenerated/_UnsafeBitSet+Index.swift",
+        "UnsafeBitSet/autogenerated/_UnsafeBitSet+_Word.swift",
+        "UnsafeBitSet/autogenerated/_UnsafeBitSet.swift",
+        "_SortedCollection.swift",
+        "_UniqueCollection.swift",
+        "autogenerated/Debugging.swift",
+        "autogenerated/Descriptions.swift",
+        "autogenerated/RandomAccessCollection+Offsets.swift",
+        "autogenerated/Specialize.swift",
+        "autogenerated/UnsafeBufferPointer+Extras.swift",
+        "autogenerated/UnsafeMutableBufferPointer+Extras.swift"
+      ],
+      "type" : "library"
+    },
+    {
+      "c99name" : "HeapTests",
+      "module_type" : "SwiftTarget",
+      "name" : "HeapTests",
+      "path" : "Tests/HeapTests",
+      "sources" : [
+        "HeapNodeTests.swift",
+        "HeapTests.swift"
+      ],
+      "target_dependencies" : [
+        "HeapModule",
+        "_CollectionsTestSupport"
+      ],
+      "type" : "test"
+    },
+    {
+      "c99name" : "HeapModule",
+      "module_type" : "SwiftTarget",
+      "name" : "HeapModule",
+      "path" : "Sources/HeapModule",
+      "product_memberships" : [
+        "HeapModule",
+        "Collections"
+      ],
+      "sources" : [
+        "Heap+Descriptions.swift",
+        "Heap+ExpressibleByArrayLiteral.swift",
+        "Heap+Invariants.swift",
+        "Heap+UnsafeHandle.swift",
+        "Heap.swift",
+        "_HeapNode.swift"
+      ],
+      "target_dependencies" : [
+        "InternalCollectionsUtilities"
+      ],
+      "type" : "library"
+    },
+    {
+      "c99name" : "HashTreeCollectionsTests",
+      "module_type" : "SwiftTarget",
+      "name" : "HashTreeCollectionsTests",
+      "path" : "Tests/HashTreeCollectionsTests",
+      "sources" : [
+        "Colliders.swift",
+        "Hash.swift",
+        "TreeDictionary Smoke Tests.swift",
+        "TreeDictionary Tests.swift",
+        "TreeDictionary.Keys Tests.swift",
+        "TreeDictionary.Values Tests.swift",
+        "TreeHashedCollections Fixtures.swift",
+        "TreeSet Tests.swift",
+        "Utilities.swift"
+      ],
+      "target_dependencies" : [
+        "HashTreeCollections",
+        "_CollectionsTestSupport"
+      ],
+      "type" : "test"
+    },
+    {
+      "c99name" : "HashTreeCollections",
+      "module_type" : "SwiftTarget",
+      "name" : "HashTreeCollections",
+      "path" : "Sources/HashTreeCollections",
+      "product_memberships" : [
+        "HashTreeCollections",
+        "Collections"
+      ],
+      "sources" : [
+        "HashNode/_AncestorHashSlots.swift",
+        "HashNode/_Bitmap.swift",
+        "HashNode/_Bucket.swift",
+        "HashNode/_Hash.swift",
+        "HashNode/_HashLevel.swift",
+        "HashNode/_HashNode+Builder.swift",
+        "HashNode/_HashNode+Debugging.swift",
+        "HashNode/_HashNode+Initializers.swift",
+        "HashNode/_HashNode+Invariants.swift",
+        "HashNode/_HashNode+Lookups.swift",
+        "HashNode/_HashNode+Primitive Insertions.swift",
+        "HashNode/_HashNode+Primitive Removals.swift",
+        "HashNode/_HashNode+Primitive Replacement.swift",
+        "HashNode/_HashNode+Storage.swift",
+        "HashNode/_HashNode+Structural compactMapValues.swift",
+        "HashNode/_HashNode+Structural filter.swift",
+        "HashNode/_HashNode+Structural intersection.swift",
+        "HashNode/_HashNode+Structural isDisjoint.swift",
+        "HashNode/_HashNode+Structural isEqualSet.swift",
+        "HashNode/_HashNode+Structural isSubset.swift",
+        "HashNode/_HashNode+Structural mapValues.swift",
+        "HashNode/_HashNode+Structural merge.swift",
+        "HashNode/_HashNode+Structural subtracting.swift",
+        "HashNode/_HashNode+Structural symmetricDifference.swift",
+        "HashNode/_HashNode+Structural union.swift",
+        "HashNode/_HashNode+Subtree Insertions.swift",
+        "HashNode/_HashNode+Subtree Modify.swift",
+        "HashNode/_HashNode+Subtree Removals.swift",
+        "HashNode/_HashNode+UnsafeHandle.swift",
+        "HashNode/_HashNode.swift",
+        "HashNode/_HashNodeHeader.swift",
+        "HashNode/_HashSlot.swift",
+        "HashNode/_HashStack.swift",
+        "HashNode/_HashTreeIterator.swift",
+        "HashNode/_HashTreeStatistics.swift",
+        "HashNode/_RawHashNode+UnsafeHandle.swift",
+        "HashNode/_RawHashNode.swift",
+        "HashNode/_UnmanagedHashNode.swift",
+        "HashNode/_UnsafePath.swift",
+        "TreeDictionary/TreeDictionary+Codable.swift",
+        "TreeDictionary/TreeDictionary+Collection.swift",
+        "TreeDictionary/TreeDictionary+CustomReflectable.swift",
+        "TreeDictionary/TreeDictionary+Debugging.swift",
+        "TreeDictionary/TreeDictionary+Descriptions.swift",
+        "TreeDictionary/TreeDictionary+Equatable.swift",
+        "TreeDictionary/TreeDictionary+ExpressibleByDictionaryLiteral.swift",
+        "TreeDictionary/TreeDictionary+Filter.swift",
+        "TreeDictionary/TreeDictionary+Hashable.swift",
+        "TreeDictionary/TreeDictionary+Initializers.swift",
+        "TreeDictionary/TreeDictionary+Keys.swift",
+        "TreeDictionary/TreeDictionary+MapValues.swift",
+        "TreeDictionary/TreeDictionary+Merge.swift",
+        "TreeDictionary/TreeDictionary+Sendable.swift",
+        "TreeDictionary/TreeDictionary+Sequence.swift",
+        "TreeDictionary/TreeDictionary+Values.swift",
+        "TreeDictionary/TreeDictionary.swift",
+        "TreeSet/TreeSet+Codable.swift",
+        "TreeSet/TreeSet+Collection.swift",
+        "TreeSet/TreeSet+CustomReflectable.swift",
+        "TreeSet/TreeSet+Debugging.swift",
+        "TreeSet/TreeSet+Descriptions.swift",
+        "TreeSet/TreeSet+Equatable.swift",
+        "TreeSet/TreeSet+ExpressibleByArrayLiteral.swift",
+        "TreeSet/TreeSet+Extras.swift",
+        "TreeSet/TreeSet+Filter.swift",
+        "TreeSet/TreeSet+Hashable.swift",
+        "TreeSet/TreeSet+Sendable.swift",
+        "TreeSet/TreeSet+Sequence.swift",
+        "TreeSet/TreeSet+SetAlgebra Initializers.swift",
+        "TreeSet/TreeSet+SetAlgebra basics.swift",
+        "TreeSet/TreeSet+SetAlgebra formIntersection.swift",
+        "TreeSet/TreeSet+SetAlgebra formSymmetricDifference.swift",
+        "TreeSet/TreeSet+SetAlgebra formUnion.swift",
+        "TreeSet/TreeSet+SetAlgebra intersection.swift",
+        "TreeSet/TreeSet+SetAlgebra isDisjoint.swift",
+        "TreeSet/TreeSet+SetAlgebra isEqualSet.swift",
+        "TreeSet/TreeSet+SetAlgebra isStrictSubset.swift",
+        "TreeSet/TreeSet+SetAlgebra isStrictSuperset.swift",
+        "TreeSet/TreeSet+SetAlgebra isSubset.swift",
+        "TreeSet/TreeSet+SetAlgebra isSuperset.swift",
+        "TreeSet/TreeSet+SetAlgebra subtract.swift",
+        "TreeSet/TreeSet+SetAlgebra subtracting.swift",
+        "TreeSet/TreeSet+SetAlgebra symmetricDifference.swift",
+        "TreeSet/TreeSet+SetAlgebra union.swift",
+        "TreeSet/TreeSet.swift"
+      ],
+      "target_dependencies" : [
+        "InternalCollectionsUtilities"
+      ],
+      "type" : "library"
+    },
+    {
+      "c99name" : "DequeTests",
+      "module_type" : "SwiftTarget",
+      "name" : "DequeTests",
+      "path" : "Tests/DequeTests",
+      "sources" : [
+        "DequeInternals.swift",
+        "DequeTests.swift",
+        "MutableCollectionTests.swift",
+        "RangeReplaceableCollectionTests.swift"
+      ],
+      "target_dependencies" : [
+        "DequeModule",
+        "_CollectionsTestSupport"
+      ],
+      "type" : "test"
+    },
+    {
+      "c99name" : "DequeModule",
+      "module_type" : "SwiftTarget",
+      "name" : "DequeModule",
+      "path" : "Sources/DequeModule",
+      "product_memberships" : [
+        "DequeModule",
+        "Collections"
+      ],
+      "sources" : [
+        "Deque+Codable.swift",
+        "Deque+Collection.swift",
+        "Deque+CustomReflectable.swift",
+        "Deque+Descriptions.swift",
+        "Deque+Equatable.swift",
+        "Deque+ExpressibleByArrayLiteral.swift",
+        "Deque+Extras.swift",
+        "Deque+Hashable.swift",
+        "Deque+Testing.swift",
+        "Deque._Storage.swift",
+        "Deque._UnsafeHandle.swift",
+        "Deque.swift",
+        "_DequeBuffer.swift",
+        "_DequeBufferHeader.swift",
+        "_DequeSlot.swift",
+        "_UnsafeWrappedBuffer.swift"
+      ],
+      "target_dependencies" : [
+        "InternalCollectionsUtilities"
+      ],
+      "type" : "library"
+    },
+    {
+      "c99name" : "CollectionsTestSupportTests",
+      "module_type" : "SwiftTarget",
+      "name" : "CollectionsTestSupportTests",
+      "path" : "Tests/CollectionsTestSupportTests",
+      "sources" : [
+        "CombinatoricsChecks.swift",
+        "IndexRangeCollectionTests.swift",
+        "MinimalTypeConformances.swift",
+        "UtilitiesTests.swift"
+      ],
+      "target_dependencies" : [
+        "_CollectionsTestSupport"
+      ],
+      "type" : "test"
+    },
+    {
+      "c99name" : "Collections",
+      "module_type" : "SwiftTarget",
+      "name" : "Collections",
+      "path" : "Sources/Collections",
+      "product_memberships" : [
+        "Collections"
+      ],
+      "sources" : [
+        "Collections.swift"
+      ],
+      "target_dependencies" : [
+        "BitCollections",
+        "DequeModule",
+        "HashTreeCollections",
+        "HeapModule",
+        "OrderedCollections",
+        "_RopeModule"
+      ],
+      "type" : "library"
+    },
+    {
+      "c99name" : "BitCollectionsTests",
+      "module_type" : "SwiftTarget",
+      "name" : "BitCollectionsTests",
+      "path" : "Tests/BitCollectionsTests",
+      "sources" : [
+        "BitArrayTests.swift",
+        "BitSet.Counted Tests.swift",
+        "BitSetTests.swift"
+      ],
+      "target_dependencies" : [
+        "BitCollections",
+        "_CollectionsTestSupport",
+        "OrderedCollections"
+      ],
+      "type" : "test"
+    },
+    {
+      "c99name" : "BitCollections",
+      "module_type" : "SwiftTarget",
+      "name" : "BitCollections",
+      "path" : "Sources/BitCollections",
+      "product_memberships" : [
+        "BitCollections",
+        "Collections"
+      ],
+      "sources" : [
+        "BitArray/BitArray+BitwiseOperations.swift",
+        "BitArray/BitArray+ChunkedBitsIterators.swift",
+        "BitArray/BitArray+Codable.swift",
+        "BitArray/BitArray+Collection.swift",
+        "BitArray/BitArray+Copy.swift",
+        "BitArray/BitArray+CustomReflectable.swift",
+        "BitArray/BitArray+Descriptions.swift",
+        "BitArray/BitArray+Equatable.swift",
+        "BitArray/BitArray+ExpressibleByArrayLiteral.swift",
+        "BitArray/BitArray+ExpressibleByStringLiteral.swift",
+        "BitArray/BitArray+Extras.swift",
+        "BitArray/BitArray+Fill.swift",
+        "BitArray/BitArray+Hashable.swift",
+        "BitArray/BitArray+Initializers.swift",
+        "BitArray/BitArray+Invariants.swift",
+        "BitArray/BitArray+LosslessStringConvertible.swift",
+        "BitArray/BitArray+RandomBits.swift",
+        "BitArray/BitArray+RangeReplaceableCollection.swift",
+        "BitArray/BitArray+Shifts.swift",
+        "BitArray/BitArray+Testing.swift",
+        "BitArray/BitArray._UnsafeHandle.swift",
+        "BitArray/BitArray.swift",
+        "BitSet/BitSet+BidirectionalCollection.swift",
+        "BitSet/BitSet+Codable.swift",
+        "BitSet/BitSet+CustomDebugStringConvertible.swift",
+        "BitSet/BitSet+CustomReflectable.swift",
+        "BitSet/BitSet+CustomStringConvertible.swift",
+        "BitSet/BitSet+Equatable.swift",
+        "BitSet/BitSet+ExpressibleByArrayLiteral.swift",
+        "BitSet/BitSet+Extras.swift",
+        "BitSet/BitSet+Hashable.swift",
+        "BitSet/BitSet+Initializers.swift",
+        "BitSet/BitSet+Invariants.swift",
+        "BitSet/BitSet+Random.swift",
+        "BitSet/BitSet+SetAlgebra basics.swift",
+        "BitSet/BitSet+SetAlgebra conformance.swift",
+        "BitSet/BitSet+SetAlgebra formIntersection.swift",
+        "BitSet/BitSet+SetAlgebra formSymmetricDifference.swift",
+        "BitSet/BitSet+SetAlgebra formUnion.swift",
+        "BitSet/BitSet+SetAlgebra intersection.swift",
+        "BitSet/BitSet+SetAlgebra isDisjoint.swift",
+        "BitSet/BitSet+SetAlgebra isEqualSet.swift",
+        "BitSet/BitSet+SetAlgebra isStrictSubset.swift",
+        "BitSet/BitSet+SetAlgebra isStrictSuperset.swift",
+        "BitSet/BitSet+SetAlgebra isSubset.swift",
+        "BitSet/BitSet+SetAlgebra isSuperset.swift",
+        "BitSet/BitSet+SetAlgebra subtract.swift",
+        "BitSet/BitSet+SetAlgebra subtracting.swift",
+        "BitSet/BitSet+SetAlgebra symmetricDifference.swift",
+        "BitSet/BitSet+SetAlgebra union.swift",
+        "BitSet/BitSet+Sorted Collection APIs.swift",
+        "BitSet/BitSet.Counted.swift",
+        "BitSet/BitSet.Index.swift",
+        "BitSet/BitSet._UnsafeHandle.swift",
+        "BitSet/BitSet.swift",
+        "Shared/Range+Utilities.swift",
+        "Shared/Slice+Utilities.swift",
+        "Shared/UInt+Tricks.swift",
+        "Shared/_Word.swift"
+      ],
+      "target_dependencies" : [
+        "InternalCollectionsUtilities"
+      ],
+      "type" : "library"
+    }
+  ],
+  "tools_version" : "5.7"
+}

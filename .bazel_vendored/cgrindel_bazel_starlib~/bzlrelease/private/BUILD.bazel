@@ -1,0 +1,64 @@
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("//bzlformat:defs.bzl", "bzlformat_pkg")
+
+package(default_visibility = ["//bzlrelease:__subpackages__"])
+
+bzlformat_pkg(name = "bzlformat")
+
+bzl_library(
+    name = "generate_module_snippet",
+    srcs = ["generate_module_snippet.bzl"],
+    deps = [
+        "//shlib/rules:execute_binary",
+    ],
+)
+
+bzl_library(
+    name = "generate_workspace_snippet",
+    srcs = ["generate_workspace_snippet.bzl"],
+    deps = [
+        "//shlib/rules:execute_binary",
+    ],
+)
+
+bzl_library(
+    name = "generate_release_notes",
+    srcs = ["generate_release_notes.bzl"],
+    deps = [
+        "//shlib/rules:execute_binary",
+    ],
+)
+
+bzl_library(
+    name = "update_readme",
+    srcs = ["update_readme.bzl"],
+    deps = [
+        "//shlib/rules:execute_binary",
+    ],
+)
+
+bzl_library(
+    name = "create_release",
+    srcs = ["create_release.bzl"],
+    deps = [
+        "//shlib/rules:execute_binary",
+    ],
+)
+
+# MARK: - Collect Files for Integation Tests
+
+filegroup(
+    name = "all_files",
+    srcs = glob(["*"]),
+    visibility = ["//:__subpackages__"],
+)
+
+bzl_library(
+    name = "hash_sha256",
+    srcs = ["hash_sha256.bzl"],
+)
+
+bzl_library(
+    name = "release_archive",
+    srcs = ["release_archive.bzl"],
+)

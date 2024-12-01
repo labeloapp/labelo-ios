@@ -1,0 +1,109 @@
+load("@io_bazel_rules_go//go/private:go_toolchain.bzl", "declare_bazel_toolchains")
+package(default_visibility = ["//visibility:public"])
+
+__0000_GO_DEFAULT_SDK_MAJOR_VERSION = "1"
+__0000_GO_DEFAULT_SDK_MINOR_VERSION = "21"
+__0000_GO_DEFAULT_SDK_PATCH_VERSION = "8"
+__0000_GO_DEFAULT_SDK_PRERELEASE_SUFFIX = ""
+
+declare_bazel_toolchains(
+    prefix = "_0000_go_default_sdk_",
+    go_toolchain_repo = "@go_default_sdk",
+    host_goarch = "arm64",
+    host_goos = "darwin",
+    major = __0000_GO_DEFAULT_SDK_MAJOR_VERSION,
+    minor = __0000_GO_DEFAULT_SDK_MINOR_VERSION,
+    patch = __0000_GO_DEFAULT_SDK_PATCH_VERSION,
+    prerelease = __0000_GO_DEFAULT_SDK_PRERELEASE_SUFFIX,
+    sdk_type = "remote",
+)
+
+
+__0001_RULES_GO__DOWNLOAD_0_DARWIN_AMD64_MAJOR_VERSION = "1"
+__0001_RULES_GO__DOWNLOAD_0_DARWIN_AMD64_MINOR_VERSION = "21"
+__0001_RULES_GO__DOWNLOAD_0_DARWIN_AMD64_PATCH_VERSION = "8"
+__0001_RULES_GO__DOWNLOAD_0_DARWIN_AMD64_PRERELEASE_SUFFIX = ""
+
+declare_bazel_toolchains(
+    prefix = "_0001_rules_go__download_0_darwin_amd64_",
+    go_toolchain_repo = "@rules_go__download_0_darwin_amd64",
+    host_goarch = "amd64",
+    host_goos = "darwin",
+    major = __0001_RULES_GO__DOWNLOAD_0_DARWIN_AMD64_MAJOR_VERSION,
+    minor = __0001_RULES_GO__DOWNLOAD_0_DARWIN_AMD64_MINOR_VERSION,
+    patch = __0001_RULES_GO__DOWNLOAD_0_DARWIN_AMD64_PATCH_VERSION,
+    prerelease = __0001_RULES_GO__DOWNLOAD_0_DARWIN_AMD64_PRERELEASE_SUFFIX,
+    sdk_type = "remote",
+)
+
+
+__0002_RULES_GO__DOWNLOAD_0_LINUX_AMD64_MAJOR_VERSION = "1"
+__0002_RULES_GO__DOWNLOAD_0_LINUX_AMD64_MINOR_VERSION = "21"
+__0002_RULES_GO__DOWNLOAD_0_LINUX_AMD64_PATCH_VERSION = "8"
+__0002_RULES_GO__DOWNLOAD_0_LINUX_AMD64_PRERELEASE_SUFFIX = ""
+
+declare_bazel_toolchains(
+    prefix = "_0002_rules_go__download_0_linux_amd64_",
+    go_toolchain_repo = "@rules_go__download_0_linux_amd64",
+    host_goarch = "amd64",
+    host_goos = "linux",
+    major = __0002_RULES_GO__DOWNLOAD_0_LINUX_AMD64_MAJOR_VERSION,
+    minor = __0002_RULES_GO__DOWNLOAD_0_LINUX_AMD64_MINOR_VERSION,
+    patch = __0002_RULES_GO__DOWNLOAD_0_LINUX_AMD64_PATCH_VERSION,
+    prerelease = __0002_RULES_GO__DOWNLOAD_0_LINUX_AMD64_PRERELEASE_SUFFIX,
+    sdk_type = "remote",
+)
+
+
+__0003_RULES_GO__DOWNLOAD_0_LINUX_ARM64_MAJOR_VERSION = "1"
+__0003_RULES_GO__DOWNLOAD_0_LINUX_ARM64_MINOR_VERSION = "21"
+__0003_RULES_GO__DOWNLOAD_0_LINUX_ARM64_PATCH_VERSION = "8"
+__0003_RULES_GO__DOWNLOAD_0_LINUX_ARM64_PRERELEASE_SUFFIX = ""
+
+declare_bazel_toolchains(
+    prefix = "_0003_rules_go__download_0_linux_arm64_",
+    go_toolchain_repo = "@rules_go__download_0_linux_arm64",
+    host_goarch = "arm64",
+    host_goos = "linux",
+    major = __0003_RULES_GO__DOWNLOAD_0_LINUX_ARM64_MAJOR_VERSION,
+    minor = __0003_RULES_GO__DOWNLOAD_0_LINUX_ARM64_MINOR_VERSION,
+    patch = __0003_RULES_GO__DOWNLOAD_0_LINUX_ARM64_PATCH_VERSION,
+    prerelease = __0003_RULES_GO__DOWNLOAD_0_LINUX_ARM64_PRERELEASE_SUFFIX,
+    sdk_type = "remote",
+)
+
+
+__0004_RULES_GO__DOWNLOAD_0_WINDOWS_AMD64_MAJOR_VERSION = "1"
+__0004_RULES_GO__DOWNLOAD_0_WINDOWS_AMD64_MINOR_VERSION = "21"
+__0004_RULES_GO__DOWNLOAD_0_WINDOWS_AMD64_PATCH_VERSION = "8"
+__0004_RULES_GO__DOWNLOAD_0_WINDOWS_AMD64_PRERELEASE_SUFFIX = ""
+
+declare_bazel_toolchains(
+    prefix = "_0004_rules_go__download_0_windows_amd64_",
+    go_toolchain_repo = "@rules_go__download_0_windows_amd64",
+    host_goarch = "amd64",
+    host_goos = "windows",
+    major = __0004_RULES_GO__DOWNLOAD_0_WINDOWS_AMD64_MAJOR_VERSION,
+    minor = __0004_RULES_GO__DOWNLOAD_0_WINDOWS_AMD64_MINOR_VERSION,
+    patch = __0004_RULES_GO__DOWNLOAD_0_WINDOWS_AMD64_PATCH_VERSION,
+    prerelease = __0004_RULES_GO__DOWNLOAD_0_WINDOWS_AMD64_PRERELEASE_SUFFIX,
+    sdk_type = "remote",
+)
+
+
+__0005_RULES_GO__DOWNLOAD_0_WINDOWS_ARM64_MAJOR_VERSION = "1"
+__0005_RULES_GO__DOWNLOAD_0_WINDOWS_ARM64_MINOR_VERSION = "21"
+__0005_RULES_GO__DOWNLOAD_0_WINDOWS_ARM64_PATCH_VERSION = "8"
+__0005_RULES_GO__DOWNLOAD_0_WINDOWS_ARM64_PRERELEASE_SUFFIX = ""
+
+declare_bazel_toolchains(
+    prefix = "_0005_rules_go__download_0_windows_arm64_",
+    go_toolchain_repo = "@rules_go__download_0_windows_arm64",
+    host_goarch = "arm64",
+    host_goos = "windows",
+    major = __0005_RULES_GO__DOWNLOAD_0_WINDOWS_ARM64_MAJOR_VERSION,
+    minor = __0005_RULES_GO__DOWNLOAD_0_WINDOWS_ARM64_MINOR_VERSION,
+    patch = __0005_RULES_GO__DOWNLOAD_0_WINDOWS_ARM64_PATCH_VERSION,
+    prerelease = __0005_RULES_GO__DOWNLOAD_0_WINDOWS_ARM64_PRERELEASE_SUFFIX,
+    sdk_type = "remote",
+)

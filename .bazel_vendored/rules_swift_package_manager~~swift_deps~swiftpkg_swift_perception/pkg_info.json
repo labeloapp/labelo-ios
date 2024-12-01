@@ -1,0 +1,329 @@
+{
+  "default_localization": "en",
+  "dependencies": [
+    {
+      "file_system": null,
+      "identity": "swift-macro-testing",
+      "name": "swift-macro-testing",
+      "source_control": null
+    },
+    {
+      "file_system": null,
+      "identity": "swift-syntax",
+      "name": "swift-syntax",
+      "source_control": null
+    },
+    {
+      "file_system": null,
+      "identity": "xctest-dynamic-overlay",
+      "name": "xctest-dynamic-overlay",
+      "source_control": null
+    }
+  ],
+  "name": "swift-perception",
+  "path": "/private/var/tmp/_bazel_adincebic/d542141b6540f70d4755466fcd988e58/external/rules_swift_package_manager~~swift_deps~swiftpkg_swift_perception",
+  "platforms": [
+    {
+      "name": "ios",
+      "version": "13.0"
+    },
+    {
+      "name": "macos",
+      "version": "10.15"
+    },
+    {
+      "name": "tvos",
+      "version": "13.0"
+    },
+    {
+      "name": "watchos",
+      "version": "6.0"
+    }
+  ],
+  "products": [
+    {
+      "name": "Perception",
+      "targets": [
+        "Perception"
+      ],
+      "type": {
+        "executable": false,
+        "is_executable": false,
+        "is_library": true,
+        "is_macro": false,
+        "is_plugin": false,
+        "library": {
+          "kind": "automatic"
+        }
+      }
+    }
+  ],
+  "targets": [
+    {
+      "artifact_download_info": null,
+      "c99name": "Perception",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "PerceptionMacros"
+          },
+          "product": null,
+          "target": null
+        },
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "xctest-dynamic-overlay",
+            "product_name": "IssueReporting"
+          },
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "Perception.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "Perception",
+      "objc_src_info": null,
+      "path": "Sources/Perception",
+      "product_memberships": [
+        "Perception"
+      ],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "Bindable.swift",
+        "Environment.swift",
+        "Internal/AnySendable.swift",
+        "Internal/BetaChecking.swift",
+        "Internal/Exports.swift",
+        "Internal/Locking.swift",
+        "Internal/ThreadLocal.swift",
+        "Internal/UncheckedSendable.swift",
+        "Internal/_PerceptionRegistrar.swift",
+        "Macros.swift",
+        "Perceptible.swift",
+        "PerceptionChecking.swift",
+        "PerceptionRegistrar.swift",
+        "PerceptionTracking.swift",
+        "WithPerceptionTracking.swift"
+      ],
+      "swift_settings": {
+        "defines": [],
+        "experimental_features": [
+          {
+            "condition": null,
+            "kind": "enableExperimentalFeature",
+            "values": [
+              "StrictConcurrency"
+            ]
+          }
+        ],
+        "unsafe_flags": []
+      },
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "regular"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "PerceptionTests",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "Perception"
+          },
+          "product": null,
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "PerceptionTests.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "PerceptionTests",
+      "objc_src_info": null,
+      "path": "Tests/PerceptionTests",
+      "product_memberships": [],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "ModifyTests.swift",
+        "PerceptionTrackingTests.swift",
+        "RuntimeWarningTests.swift"
+      ],
+      "swift_settings": {
+        "defines": [],
+        "experimental_features": [
+          {
+            "condition": null,
+            "kind": "enableExperimentalFeature",
+            "values": [
+              "StrictConcurrency"
+            ]
+          }
+        ],
+        "unsafe_flags": []
+      },
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "test"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "PerceptionMacros",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "swift-syntax",
+            "product_name": "SwiftSyntaxMacros"
+          },
+          "target": null
+        },
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "swift-syntax",
+            "product_name": "SwiftCompilerPlugin"
+          },
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "PerceptionMacros.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "PerceptionMacros",
+      "objc_src_info": null,
+      "path": "Sources/PerceptionMacros",
+      "product_memberships": [
+        "Perception"
+      ],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "Availability.swift",
+        "Extensions.swift",
+        "PerceptibleMacro.swift",
+        "Plugins.swift"
+      ],
+      "swift_settings": {
+        "defines": [],
+        "experimental_features": [
+          {
+            "condition": null,
+            "kind": "enableExperimentalFeature",
+            "values": [
+              "StrictConcurrency"
+            ]
+          }
+        ],
+        "unsafe_flags": []
+      },
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "macro"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "PerceptionMacrosTests",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "PerceptionMacros"
+          },
+          "product": null,
+          "target": null
+        },
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "swift-macro-testing",
+            "product_name": "MacroTesting"
+          },
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "PerceptionMacrosTests.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "PerceptionMacrosTests",
+      "objc_src_info": null,
+      "path": "Tests/PerceptionMacrosTests",
+      "product_memberships": [],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "PerceptionMacrosTests.swift"
+      ],
+      "swift_settings": {
+        "defines": [],
+        "experimental_features": [
+          {
+            "condition": null,
+            "kind": "enableExperimentalFeature",
+            "values": [
+              "StrictConcurrency"
+            ]
+          }
+        ],
+        "unsafe_flags": []
+      },
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "test"
+    }
+  ],
+  "tools_version": "5.9.0",
+  "url": "https://github.com/pointfreeco/swift-perception",
+  "version": "1.3.5"
+}
