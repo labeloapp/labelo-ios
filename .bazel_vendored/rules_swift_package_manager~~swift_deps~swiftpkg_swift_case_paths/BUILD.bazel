@@ -1,0 +1,92 @@
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_compiler_plugin", "swift_library", "swift_library_group")
+load("@rules_license//rules:license.bzl", "license")
+load("@rules_license//rules:package_info.bzl", "package_info")
+
+package(
+    default_package_metadata = [
+        ":license.rspm",
+        ":package_info.rspm",
+    ],
+)
+
+exports_files(["pkg_info.json"])
+
+license(
+    name = "license.rspm",
+    license_text = "LICENSE",
+)
+
+package_info(
+    name = "package_info.rspm",
+    package_name = "swift-case-paths",
+    package_url = "https://github.com/pointfreeco/swift-case-paths",
+    package_version = "1.5.6",
+)
+
+swift_compiler_plugin(
+    name = "CasePathsMacros.rspm",
+    copts = ["-DSWIFT_PACKAGE"],
+    deps = [
+        "@swiftpkg_swift_syntax//:SwiftSyntaxMacros",
+        "@swiftpkg_swift_syntax//:SwiftCompilerPlugin",
+    ],
+    minimum_os_version = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:macos": "10.15",
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": "6.0",
+        "//conditions:default": "oldest",
+    }),
+    module_name = "CasePathsMacros",
+    package_name = "swift-case-paths",
+    srcs = [
+        "Sources/CasePathsMacros/CasePathableMacro.swift",
+        "Sources/CasePathsMacros/Plugin.swift",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+swift_library(
+    name = "CasePaths.rspm",
+    always_include_developer_search_paths = True,
+    copts = ["-DSWIFT_PACKAGE"],
+    deps = [
+        "@swiftpkg_xctest_dynamic_overlay//:IssueReporting",
+        "@swiftpkg_xctest_dynamic_overlay//:XCTestDynamicOverlay",
+    ],
+    minimum_os_version = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:macos": "10.15",
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": "6.0",
+        "//conditions:default": "oldest",
+    }),
+    module_name = "CasePaths",
+    package_name = "swift-case-paths",
+    plugins = ["//:CasePathsMacros.rspm"],
+    srcs = [
+        "Sources/CasePaths/AnyCasePath.swift",
+        "Sources/CasePaths/CasePathIterable.swift",
+        "Sources/CasePaths/CasePathReflectable.swift",
+        "Sources/CasePaths/CasePathable.swift",
+        "Sources/CasePaths/EnumReflection.swift",
+        "Sources/CasePaths/Internal/Deprecations.swift",
+        "Sources/CasePaths/Internal/LockIsolated.swift",
+        "Sources/CasePaths/Internal/OpenExistential.swift",
+        "Sources/CasePaths/Internal/TypeName.swift",
+        "Sources/CasePaths/Internal/UncheckedSendable.swift",
+        "Sources/CasePaths/Macros.swift",
+        "Sources/CasePaths/Never+CasePathable.swift",
+        "Sources/CasePaths/Optional+CasePathable.swift",
+        "Sources/CasePaths/Result+CasePathable.swift",
+        "Sources/CasePaths/XCTestSupport.swift",
+    ],
+    tags = ["manual"],
+    visibility = ["//:__subpackages__"],
+)
+
+swift_library_group(
+    name = "CasePaths",
+    deps = ["@swiftpkg_swift_case_paths//:CasePaths.rspm"],
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,371 @@
+{
+  "default_localization": "en",
+  "dependencies": [
+    {
+      "file_system": null,
+      "identity": "swift-docc-plugin",
+      "name": "swift-docc-plugin",
+      "source_control": null
+    },
+    {
+      "file_system": null,
+      "identity": "carton",
+      "name": "carton",
+      "source_control": null
+    }
+  ],
+  "name": "xctest-dynamic-overlay",
+  "path": "/private/var/tmp/_bazel_adincebic/d542141b6540f70d4755466fcd988e58/external/rules_swift_package_manager~~swift_deps~swiftpkg_xctest_dynamic_overlay",
+  "platforms": [
+    {
+      "name": "ios",
+      "version": "13.0"
+    },
+    {
+      "name": "macos",
+      "version": "10.15"
+    },
+    {
+      "name": "tvos",
+      "version": "13.0"
+    },
+    {
+      "name": "watchos",
+      "version": "6.0"
+    }
+  ],
+  "products": [
+    {
+      "name": "IssueReporting",
+      "targets": [
+        "IssueReporting"
+      ],
+      "type": {
+        "executable": false,
+        "is_executable": false,
+        "is_library": true,
+        "is_macro": false,
+        "is_plugin": false,
+        "library": {
+          "kind": "automatic"
+        }
+      }
+    },
+    {
+      "name": "IssueReportingTestSupport",
+      "targets": [
+        "IssueReportingTestSupport"
+      ],
+      "type": {
+        "executable": false,
+        "is_executable": false,
+        "is_library": true,
+        "is_macro": false,
+        "is_plugin": false,
+        "library": {
+          "kind": "automatic"
+        }
+      }
+    },
+    {
+      "name": "XCTestDynamicOverlay",
+      "targets": [
+        "XCTestDynamicOverlay"
+      ],
+      "type": {
+        "executable": false,
+        "is_executable": false,
+        "is_library": true,
+        "is_macro": false,
+        "is_plugin": false,
+        "library": {
+          "kind": "automatic"
+        }
+      }
+    }
+  ],
+  "targets": [
+    {
+      "artifact_download_info": null,
+      "c99name": "IssueReporting",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [],
+      "exclude_paths": [],
+      "label": {
+        "name": "IssueReporting.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "IssueReporting",
+      "objc_src_info": null,
+      "path": "Sources/IssueReporting",
+      "product_memberships": [
+        "IssueReporting",
+        "XCTestDynamicOverlay"
+      ],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "Internal/AppHostWarning.swift",
+        "Internal/Deprecations.swift",
+        "Internal/FailureObserver.swift",
+        "Internal/LockIsolated.swift",
+        "Internal/Rethrows.swift",
+        "Internal/SwiftTesting.swift",
+        "Internal/UncheckedSendable.swift",
+        "Internal/Warn.swift",
+        "Internal/XCTest.swift",
+        "IsTesting.swift",
+        "IssueReporter.swift",
+        "IssueReporters/BreakpointReporter.swift",
+        "IssueReporters/FatalErrorReporter.swift",
+        "IssueReporters/RuntimeWarningReporter.swift",
+        "ReportIssue.swift",
+        "TestContext.swift",
+        "Unimplemented.swift",
+        "WithExpectedIssue.swift",
+        "WithIssueContext.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "regular"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "IssueReportingTests",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "IssueReporting"
+          },
+          "product": null,
+          "target": null
+        },
+        {
+          "by_name": {
+            "condition": null,
+            "name": "IssueReportingTestSupport"
+          },
+          "product": null,
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "IssueReportingTests.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "IssueReportingTests",
+      "objc_src_info": null,
+      "path": "Tests/IssueReportingTests",
+      "product_memberships": [],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "HostAppDetectionTests.swift",
+        "SwiftTestingTests.swift",
+        "UnimplementedTests.swift",
+        "XCTestTests.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "test"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "IssueReportingTestSupport",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [],
+      "exclude_paths": [],
+      "label": {
+        "name": "IssueReportingTestSupport.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "IssueReportingTestSupport",
+      "objc_src_info": null,
+      "path": "Sources/IssueReportingTestSupport",
+      "product_memberships": [
+        "IssueReportingTestSupport"
+      ],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "SwiftTesting.swift",
+        "XCTest.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "regular"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "XCTestDynamicOverlay",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "IssueReporting"
+          },
+          "product": null,
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "XCTestDynamicOverlay.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "XCTestDynamicOverlay",
+      "objc_src_info": null,
+      "path": "Sources/XCTestDynamicOverlay",
+      "product_memberships": [
+        "XCTestDynamicOverlay"
+      ],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "Internal/Deprecations.swift",
+        "Internal/Exports.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "regular"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "XCTestDynamicOverlayTests",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "IssueReportingTestSupport"
+          },
+          "product": null,
+          "target": null
+        },
+        {
+          "by_name": {
+            "condition": null,
+            "name": "XCTestDynamicOverlay"
+          },
+          "product": null,
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "XCTestDynamicOverlayTests.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "XCTestDynamicOverlayTests",
+      "objc_src_info": null,
+      "path": "Tests/XCTestDynamicOverlayTests",
+      "product_memberships": [],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "TestHelpers.swift",
+        "UnimplementedTests.swift",
+        "XCTContextTests.swift",
+        "XCTExpectFailureTests.swift",
+        "XCTFailRegressionTests.swift",
+        "XCTFailTests.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "test"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "WasmTests",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "IssueReporting"
+          },
+          "product": null,
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "WasmTests.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "WasmTests",
+      "objc_src_info": null,
+      "path": "Sources/WasmTests",
+      "product_memberships": [],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "main.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "executable"
+    }
+  ],
+  "tools_version": "6.0.0",
+  "url": "https://github.com/pointfreeco/xctest-dynamic-overlay",
+  "version": "1.4.2"
+}

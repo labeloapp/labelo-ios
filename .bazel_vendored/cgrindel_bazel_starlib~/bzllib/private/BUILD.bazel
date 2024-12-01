@@ -1,0 +1,40 @@
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("//bzlformat:defs.bzl", "bzlformat_pkg")
+
+package(default_visibility = ["//bzllib:__subpackages__"])
+
+bzlformat_pkg(name = "bzlformat")
+
+# MARK: - Collect Files for Integation Tests
+
+filegroup(
+    name = "all_files",
+    srcs = glob(["*"]),
+    visibility = ["//:__subpackages__"],
+)
+
+bzl_library(
+    name = "bazel_labels",
+    srcs = ["bazel_labels.bzl"],
+    deps = [":workspace_name_resolvers"],
+)
+
+bzl_library(
+    name = "filter_srcs",
+    srcs = ["filter_srcs.bzl"],
+)
+
+bzl_library(
+    name = "lists",
+    srcs = ["lists.bzl"],
+)
+
+bzl_library(
+    name = "src_utils",
+    srcs = ["src_utils.bzl"],
+)
+
+bzl_library(
+    name = "workspace_name_resolvers",
+    srcs = ["workspace_name_resolvers.bzl"],
+)

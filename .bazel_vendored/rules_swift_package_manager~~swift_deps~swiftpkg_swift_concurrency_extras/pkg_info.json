@@ -1,0 +1,143 @@
+{
+  "default_localization": "en",
+  "dependencies": [
+    {
+      "file_system": null,
+      "identity": "swift-docc-plugin",
+      "name": "swift-docc-plugin",
+      "source_control": null
+    }
+  ],
+  "name": "swift-concurrency-extras",
+  "path": "/private/var/tmp/_bazel_adincebic/d542141b6540f70d4755466fcd988e58/external/rules_swift_package_manager~~swift_deps~swiftpkg_swift_concurrency_extras",
+  "platforms": [
+    {
+      "name": "ios",
+      "version": "13.0"
+    },
+    {
+      "name": "macos",
+      "version": "10.15"
+    },
+    {
+      "name": "tvos",
+      "version": "13.0"
+    },
+    {
+      "name": "watchos",
+      "version": "6.0"
+    }
+  ],
+  "products": [
+    {
+      "name": "ConcurrencyExtras",
+      "targets": [
+        "ConcurrencyExtras"
+      ],
+      "type": {
+        "executable": false,
+        "is_executable": false,
+        "is_library": true,
+        "is_macro": false,
+        "is_plugin": false,
+        "library": {
+          "kind": "automatic"
+        }
+      }
+    }
+  ],
+  "targets": [
+    {
+      "artifact_download_info": null,
+      "c99name": "ConcurrencyExtras",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [],
+      "exclude_paths": [],
+      "label": {
+        "name": "ConcurrencyExtras.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "ConcurrencyExtras",
+      "objc_src_info": null,
+      "path": "Sources/ConcurrencyExtras",
+      "product_memberships": [
+        "ConcurrencyExtras"
+      ],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "ActorIsolated.swift",
+        "AnyHashableSendable.swift",
+        "AsyncStream.swift",
+        "AsyncThrowingStream.swift",
+        "Internal/Locking.swift",
+        "Internal/UncheckedBox.swift",
+        "LockIsolated.swift",
+        "MainSerialExecutor.swift",
+        "Result.swift",
+        "Task.swift",
+        "UncheckedSendable.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "regular"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "ConcurrencyExtrasTests",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "ConcurrencyExtras"
+          },
+          "product": null,
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "ConcurrencyExtrasTests.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "ConcurrencyExtrasTests",
+      "objc_src_info": null,
+      "path": "Tests/ConcurrencyExtrasTests",
+      "product_memberships": [],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "ActorIsolatedTests.swift",
+        "AnyHashableSendableTests.swift",
+        "AsyncStreamTests.swift",
+        "LockIsolatedTests.swift",
+        "MainSerialExecutorTests.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "test"
+    }
+  ],
+  "tools_version": "6.0.0",
+  "url": "https://github.com/pointfreeco/swift-concurrency-extras",
+  "version": "1.2.0"
+}

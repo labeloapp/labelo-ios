@@ -1,0 +1,8 @@
+load("//python:pip.bzl", "compile_pip_requirements")
+
+compile_pip_requirements(
+    name = "requirements",
+    src = "requirements.in",
+    requirements_darwin = "requirements_darwin.txt",
+    requirements_windows = "requirements_windows.txt",
+)

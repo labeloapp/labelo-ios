@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  library:
+    name: Library
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode 15.4
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app
+      - name: Run tests
+        run: make test
+      # - name: Build for library evolution
+      #   run: make build-for-library-evolution
+
+  windows:
+    name: Windows
+    strategy:
+      matrix:
+        os: [windows-latest]
+        config: ['debug', 'release']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: compnerd/gha-setup-swift@main
+        with:
+          branch: swift-5.10-release
+          tag: 5.10-RELEASE
+
+      - uses: actions/checkout@v4
+      - name: Run tests
+        run: swift test -c ${{ matrix.config }}

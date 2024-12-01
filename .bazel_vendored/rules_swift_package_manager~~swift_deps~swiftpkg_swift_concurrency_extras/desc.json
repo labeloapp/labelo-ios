@@ -1,0 +1,97 @@
+{
+  "dependencies" : [
+    {
+      "identity" : "swift-docc-plugin",
+      "requirement" : {
+        "range" : [
+          {
+            "lower_bound" : "1.0.0",
+            "upper_bound" : "2.0.0"
+          }
+        ]
+      },
+      "type" : "sourceControl",
+      "url" : "https://github.com/apple/swift-docc-plugin"
+    }
+  ],
+  "manifest_display_name" : "swift-concurrency-extras",
+  "name" : "swift-concurrency-extras",
+  "path" : "/private/var/tmp/_bazel_adincebic/d542141b6540f70d4755466fcd988e58/external/rules_swift_package_manager~~swift_deps~swiftpkg_swift_concurrency_extras",
+  "platforms" : [
+    {
+      "name" : "ios",
+      "version" : "13.0"
+    },
+    {
+      "name" : "macos",
+      "version" : "10.15"
+    },
+    {
+      "name" : "tvos",
+      "version" : "13.0"
+    },
+    {
+      "name" : "watchos",
+      "version" : "6.0"
+    }
+  ],
+  "products" : [
+    {
+      "name" : "ConcurrencyExtras",
+      "targets" : [
+        "ConcurrencyExtras"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    }
+  ],
+  "swift_languages_versions" : [
+    "6"
+  ],
+  "targets" : [
+    {
+      "c99name" : "ConcurrencyExtrasTests",
+      "module_type" : "SwiftTarget",
+      "name" : "ConcurrencyExtrasTests",
+      "path" : "Tests/ConcurrencyExtrasTests",
+      "sources" : [
+        "ActorIsolatedTests.swift",
+        "AnyHashableSendableTests.swift",
+        "AsyncStreamTests.swift",
+        "LockIsolatedTests.swift",
+        "MainSerialExecutorTests.swift"
+      ],
+      "target_dependencies" : [
+        "ConcurrencyExtras"
+      ],
+      "type" : "test"
+    },
+    {
+      "c99name" : "ConcurrencyExtras",
+      "module_type" : "SwiftTarget",
+      "name" : "ConcurrencyExtras",
+      "path" : "Sources/ConcurrencyExtras",
+      "product_memberships" : [
+        "ConcurrencyExtras"
+      ],
+      "sources" : [
+        "ActorIsolated.swift",
+        "AnyHashableSendable.swift",
+        "AsyncStream.swift",
+        "AsyncThrowingStream.swift",
+        "Internal/Locking.swift",
+        "Internal/UncheckedBox.swift",
+        "LockIsolated.swift",
+        "MainSerialExecutor.swift",
+        "Result.swift",
+        "Task.swift",
+        "UncheckedSendable.swift"
+      ],
+      "type" : "library"
+    }
+  ],
+  "tools_version" : "6.0"
+}

@@ -1,0 +1,25 @@
+load("//bzlformat:defs.bzl", "bzlformat_pkg")
+
+# MARK: - Binaries
+
+sh_binary(
+    name = "buildifier",
+    srcs = ["buildifier.sh"],
+    data = ["@buildifier_prebuilt//buildifier"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//shlib/lib:arrays",
+        "//shlib/lib:fail",
+        "@bazel_tools//tools/bash/runfiles",
+    ],
+)
+
+bzlformat_pkg(name = "bzlformat")
+
+# MARK: - Collect Files for Integation Tests
+
+filegroup(
+    name = "all_files",
+    srcs = glob(["*"]),
+    visibility = ["//:__subpackages__"],
+)

@@ -1,0 +1,236 @@
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library", "swift_library_group")
+load("@rules_license//rules:license.bzl", "license")
+load("@rules_license//rules:package_info.bzl", "package_info")
+load("@rules_swift_package_manager//swiftpkg:build_defs.bzl", "generate_modulemap")
+
+package(
+    default_package_metadata = [
+        ":license.rspm",
+        ":package_info.rspm",
+    ],
+)
+
+exports_files(["pkg_info.json"])
+
+generate_modulemap(
+    name = "UIKitNavigationShim.rspm_modulemap",
+    deps = [],
+    hdrs = ["Sources/UIKitNavigationShim/include/shim.h"],
+    module_name = "UIKitNavigationShim",
+    noop = False,
+    visibility = ["//:__subpackages__"],
+)
+
+license(
+    name = "license.rspm",
+    license_text = "LICENSE",
+)
+
+objc_library(
+    name = "UIKitNavigationShim.rspm",
+    copts = [
+        "-fblocks",
+        "-fobjc-arc",
+        "-fPIC",
+        "-fmodule-name=UIKitNavigationShim",
+        "-DSWIFT_PACKAGE=1",
+    ],
+    enable_modules = True,
+    hdrs = ["Sources/UIKitNavigationShim/include/shim.h"],
+    includes = ["Sources/UIKitNavigationShim/include"],
+    module_name = "UIKitNavigationShim",
+    sdk_frameworks = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": ["UIKit"],
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": ["UIKit"],
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": ["UIKit"],
+        "//conditions:default": [],
+    }),
+    srcs = ["Sources/UIKitNavigationShim/shim.m"],
+    textual_hdrs = ["Sources/UIKitNavigationShim/shim.m"],
+    visibility = ["//:__subpackages__"],
+)
+
+package_info(
+    name = "package_info.rspm",
+    package_name = "swift-navigation",
+    package_url = "https://github.com/pointfreeco/swift-navigation",
+    package_version = "2.2.2",
+)
+
+swift_library(
+    name = "AppKitNavigation.rspm",
+    always_include_developer_search_paths = True,
+    copts = ["-DSWIFT_PACKAGE"],
+    deps = ["@swiftpkg_swift_navigation//:SwiftNavigation.rspm"],
+    minimum_os_version = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:macos": "10.15",
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": "6.0",
+        "//conditions:default": "oldest",
+    }),
+    module_name = "AppKitNavigation",
+    package_name = "swift-navigation",
+    srcs = [
+        "Sources/AppKitNavigation/AppKitAnimation.swift",
+        "Sources/AppKitNavigation/Internal/Exports.swift",
+        "Sources/AppKitNavigation/SwiftUI/Representable.swift",
+        "Sources/AppKitNavigation/UIBinding.swift",
+        "Sources/AppKitNavigation/UITransaction.swift",
+    ],
+    tags = ["manual"],
+    visibility = ["//:__subpackages__"],
+)
+
+swift_library(
+    name = "SwiftNavigation.rspm",
+    always_include_developer_search_paths = True,
+    copts = ["-DSWIFT_PACKAGE"],
+    deps = [
+        "@swiftpkg_swift_case_paths//:CasePaths",
+        "@swiftpkg_swift_custom_dump//:CustomDump",
+        "@swiftpkg_swift_concurrency_extras//:ConcurrencyExtras",
+        "@swiftpkg_swift_collections//:OrderedCollections",
+        "@swiftpkg_swift_perception//:Perception",
+    ],
+    minimum_os_version = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:macos": "10.15",
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": "6.0",
+        "//conditions:default": "oldest",
+    }),
+    module_name = "SwiftNavigation",
+    package_name = "swift-navigation",
+    srcs = [
+        "Sources/SwiftNavigation/AlertState.swift",
+        "Sources/SwiftNavigation/Bind.swift",
+        "Sources/SwiftNavigation/Binding.swift",
+        "Sources/SwiftNavigation/ButtonState.swift",
+        "Sources/SwiftNavigation/ButtonStateBuilder.swift",
+        "Sources/SwiftNavigation/ConfirmationDialogState.swift",
+        "Sources/SwiftNavigation/HashableObject.swift",
+        "Sources/SwiftNavigation/Internal/AssumeIsolated.swift",
+        "Sources/SwiftNavigation/Internal/Deprecations.swift",
+        "Sources/SwiftNavigation/Internal/ErrorMechanism.swift",
+        "Sources/SwiftNavigation/Internal/Exports.swift",
+        "Sources/SwiftNavigation/Internal/HashableStaticString.swift",
+        "Sources/SwiftNavigation/Internal/KeyPath+Sendable.swift",
+        "Sources/SwiftNavigation/Internal/ToOptionalUnit.swift",
+        "Sources/SwiftNavigation/NSObject+Observe.swift",
+        "Sources/SwiftNavigation/Observe.swift",
+        "Sources/SwiftNavigation/TextState.swift",
+        "Sources/SwiftNavigation/UIBindable.swift",
+        "Sources/SwiftNavigation/UIBinding.swift",
+        "Sources/SwiftNavigation/UINavigationPath.swift",
+        "Sources/SwiftNavigation/UITransaction.swift",
+    ],
+    tags = ["manual"],
+    visibility = ["//:__subpackages__"],
+)
+
+swift_library(
+    name = "SwiftUINavigation.rspm",
+    always_include_developer_search_paths = True,
+    copts = ["-DSWIFT_PACKAGE"],
+    deps = [
+        "@swiftpkg_swift_navigation//:UIKitNavigation.rspm",
+        "@swiftpkg_swift_case_paths//:CasePaths",
+        "@swiftpkg_xctest_dynamic_overlay//:IssueReporting",
+    ],
+    minimum_os_version = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:macos": "10.15",
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": "6.0",
+        "//conditions:default": "oldest",
+    }),
+    module_name = "SwiftUINavigation",
+    package_name = "swift-navigation",
+    srcs = [
+        "Sources/SwiftUINavigation/Alert.swift",
+        "Sources/SwiftUINavigation/Binding.swift",
+        "Sources/SwiftUINavigation/ConfirmationDialog.swift",
+        "Sources/SwiftUINavigation/FullScreenCover.swift",
+        "Sources/SwiftUINavigation/Internal/Binding+Internal.swift",
+        "Sources/SwiftUINavigation/Internal/Exports.swift",
+        "Sources/SwiftUINavigation/Internal/Identified.swift",
+        "Sources/SwiftUINavigation/NavigationDestination.swift",
+        "Sources/SwiftUINavigation/NavigationLink.swift",
+        "Sources/SwiftUINavigation/Popover.swift",
+        "Sources/SwiftUINavigation/Sheet.swift",
+        "Sources/SwiftUINavigation/WithState.swift",
+    ],
+    tags = ["manual"],
+    visibility = ["//:__subpackages__"],
+)
+
+swift_library(
+    name = "UIKitNavigation.rspm",
+    always_include_developer_search_paths = True,
+    copts = ["-DSWIFT_PACKAGE"],
+    deps = [
+        "@swiftpkg_swift_navigation//:SwiftNavigation.rspm",
+        "@swiftpkg_swift_navigation//:UIKitNavigationShim.rspm",
+        "@swiftpkg_swift_navigation//:UIKitNavigationShim.rspm_modulemap",
+        "@swiftpkg_swift_concurrency_extras//:ConcurrencyExtras",
+    ],
+    minimum_os_version = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:macos": "10.15",
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": "6.0",
+        "//conditions:default": "oldest",
+    }),
+    module_name = "UIKitNavigation",
+    package_name = "swift-navigation",
+    srcs = [
+        "Sources/UIKitNavigation/Bindings/UIColorWell.swift",
+        "Sources/UIKitNavigation/Bindings/UIControl.swift",
+        "Sources/UIKitNavigation/Bindings/UIDatePicker.swift",
+        "Sources/UIKitNavigation/Bindings/UIPageControl.swift",
+        "Sources/UIKitNavigation/Bindings/UISegmentedControl.swift",
+        "Sources/UIKitNavigation/Bindings/UISlider.swift",
+        "Sources/UIKitNavigation/Bindings/UIStepper.swift",
+        "Sources/UIKitNavigation/Bindings/UISwitch.swift",
+        "Sources/UIKitNavigation/Bindings/UITabBarController.swift",
+        "Sources/UIKitNavigation/Bindings/UITextField.swift",
+        "Sources/UIKitNavigation/Internal/Exports.swift",
+        "Sources/UIKitNavigation/Internal/PopFromViewController.swift",
+        "Sources/UIKitNavigation/Navigation/Dismiss.swift",
+        "Sources/UIKitNavigation/Navigation/NavigationStackController.swift",
+        "Sources/UIKitNavigation/Navigation/Presentation.swift",
+        "Sources/UIKitNavigation/Navigation/Push.swift",
+        "Sources/UIKitNavigation/Navigation/UIAlertController.swift",
+        "Sources/UIKitNavigation/SwiftUI/Representable.swift",
+        "Sources/UIKitNavigation/UIBinding.swift",
+        "Sources/UIKitNavigation/UIKitAnimation.swift",
+        "Sources/UIKitNavigation/UITransaction.swift",
+    ],
+    tags = ["manual"],
+    visibility = ["//:__subpackages__"],
+)
+
+swift_library_group(
+    name = "AppKitNavigation",
+    deps = ["@swiftpkg_swift_navigation//:AppKitNavigation.rspm"],
+    visibility = ["//visibility:public"],
+)
+
+swift_library_group(
+    name = "SwiftNavigation",
+    deps = ["@swiftpkg_swift_navigation//:SwiftNavigation.rspm"],
+    visibility = ["//visibility:public"],
+)
+
+swift_library_group(
+    name = "SwiftUINavigation",
+    deps = ["@swiftpkg_swift_navigation//:SwiftUINavigation.rspm"],
+    visibility = ["//visibility:public"],
+)
+
+swift_library_group(
+    name = "UIKitNavigation",
+    deps = ["@swiftpkg_swift_navigation//:UIKitNavigation.rspm"],
+    visibility = ["//visibility:public"],
+)

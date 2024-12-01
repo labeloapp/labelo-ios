@@ -1,0 +1,4 @@
+c0d3a817abd945c0b386fee3c8b9e4c92022fc80ab8cf16bdb4fd1048f63957a
+REPO_MAPPING:rules_swift_package_manager~,bazel_skylib bazel_skylib~
+REPO_MAPPING:rules_swift_package_manager~,bazel_tools bazel_tools
+REPO_MAPPING:rules_swift_package_manager~,cgrindel_bazel_starlib cgrindel_bazel_starlib~

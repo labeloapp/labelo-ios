@@ -1,0 +1,4 @@
+077d927f6c7d3af888407a5d34ee41e043be805c0cb075b0445481c80dbbbb21
+REPO_MAPPING:rules_swift_package_manager~,bazel_skylib bazel_skylib~
+REPO_MAPPING:rules_swift_package_manager~,bazel_tools bazel_tools
+REPO_MAPPING:rules_swift_package_manager~,cgrindel_bazel_starlib cgrindel_bazel_starlib~

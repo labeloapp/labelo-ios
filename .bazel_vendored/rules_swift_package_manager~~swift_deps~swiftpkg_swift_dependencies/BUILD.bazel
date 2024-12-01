@@ -1,0 +1,184 @@
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_compiler_plugin", "swift_library", "swift_library_group")
+load("@rules_license//rules:license.bzl", "license")
+load("@rules_license//rules:package_info.bzl", "package_info")
+
+package(
+    default_package_metadata = [
+        ":license.rspm",
+        ":package_info.rspm",
+    ],
+)
+
+exports_files(["pkg_info.json"])
+
+license(
+    name = "license.rspm",
+    license_text = "LICENSE",
+)
+
+package_info(
+    name = "package_info.rspm",
+    package_name = "swift-dependencies",
+    package_url = "https://github.com/pointfreeco/swift-dependencies",
+    package_version = "1.4.1",
+)
+
+swift_compiler_plugin(
+    name = "DependenciesMacrosPlugin.rspm",
+    copts = ["-DSWIFT_PACKAGE"],
+    deps = [
+        "@swiftpkg_swift_syntax//:SwiftSyntaxMacros",
+        "@swiftpkg_swift_syntax//:SwiftCompilerPlugin",
+    ],
+    minimum_os_version = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:macos": "10.15",
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": "6.0",
+        "//conditions:default": "oldest",
+    }),
+    module_name = "DependenciesMacrosPlugin",
+    package_name = "swift-dependencies",
+    srcs = [
+        "Sources/DependenciesMacrosPlugin/DependencyClientMacro.swift",
+        "Sources/DependenciesMacrosPlugin/DependencyEndpointMacro.swift",
+        "Sources/DependenciesMacrosPlugin/Plugins.swift",
+        "Sources/DependenciesMacrosPlugin/Support.swift",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+swift_library(
+    name = "Dependencies.rspm",
+    always_include_developer_search_paths = True,
+    copts = ["-DSWIFT_PACKAGE"],
+    deps = [
+        "@swiftpkg_swift_clocks//:Clocks",
+        "@swiftpkg_combine_schedulers//:CombineSchedulers",
+        "@swiftpkg_swift_concurrency_extras//:ConcurrencyExtras",
+        "@swiftpkg_xctest_dynamic_overlay//:IssueReporting",
+        "@swiftpkg_xctest_dynamic_overlay//:XCTestDynamicOverlay",
+    ],
+    minimum_os_version = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:macos": "10.15",
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": "6.0",
+        "//conditions:default": "oldest",
+    }),
+    module_name = "Dependencies",
+    package_name = "swift-dependencies",
+    srcs = [
+        "Sources/Dependencies/Dependency.swift",
+        "Sources/Dependencies/DependencyContext.swift",
+        "Sources/Dependencies/DependencyKey.swift",
+        "Sources/Dependencies/DependencyValues.swift",
+        "Sources/Dependencies/DependencyValues/Assert.swift",
+        "Sources/Dependencies/DependencyValues/Calendar.swift",
+        "Sources/Dependencies/DependencyValues/Clocks.swift",
+        "Sources/Dependencies/DependencyValues/Context.swift",
+        "Sources/Dependencies/DependencyValues/Date.swift",
+        "Sources/Dependencies/DependencyValues/FireAndForget.swift",
+        "Sources/Dependencies/DependencyValues/Locale.swift",
+        "Sources/Dependencies/DependencyValues/MainQueue.swift",
+        "Sources/Dependencies/DependencyValues/MainRunLoop.swift",
+        "Sources/Dependencies/DependencyValues/OpenURL.swift",
+        "Sources/Dependencies/DependencyValues/TimeZone.swift",
+        "Sources/Dependencies/DependencyValues/URLSession.swift",
+        "Sources/Dependencies/DependencyValues/UUID.swift",
+        "Sources/Dependencies/DependencyValues/WithRandomNumberGenerator.swift",
+        "Sources/Dependencies/Internal/Deprecations.swift",
+        "Sources/Dependencies/Internal/Exports.swift",
+        "Sources/Dependencies/Internal/TypeName.swift",
+        "Sources/Dependencies/Traits/PreviewTrait.swift",
+        "Sources/Dependencies/Traits/TestTrait.swift",
+        "Sources/Dependencies/WithDependencies.swift",
+    ],
+    tags = ["manual"],
+    visibility = ["//:__subpackages__"],
+)
+
+swift_library(
+    name = "DependenciesMacros.rspm",
+    always_include_developer_search_paths = True,
+    copts = ["-DSWIFT_PACKAGE"],
+    deps = [
+        "@swiftpkg_xctest_dynamic_overlay//:IssueReporting",
+        "@swiftpkg_xctest_dynamic_overlay//:XCTestDynamicOverlay",
+    ],
+    minimum_os_version = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:macos": "10.15",
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": "6.0",
+        "//conditions:default": "oldest",
+    }),
+    module_name = "DependenciesMacros",
+    package_name = "swift-dependencies",
+    plugins = ["//:DependenciesMacrosPlugin.rspm"],
+    srcs = [
+        "Sources/DependenciesMacros/Internal/Exports.swift",
+        "Sources/DependenciesMacros/Macros.swift",
+    ],
+    tags = ["manual"],
+    visibility = ["//:__subpackages__"],
+)
+
+swift_library(
+    name = "DependenciesTestObserver.rspm",
+    always_include_developer_search_paths = True,
+    copts = ["-DSWIFT_PACKAGE"],
+    deps = ["@swiftpkg_xctest_dynamic_overlay//:IssueReporting"],
+    minimum_os_version = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:macos": "10.15",
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": "6.0",
+        "//conditions:default": "oldest",
+    }),
+    module_name = "DependenciesTestObserver",
+    package_name = "swift-dependencies",
+    srcs = ["Sources/DependenciesTestObserver/TestObserver.swift"],
+    tags = ["manual"],
+    visibility = ["//:__subpackages__"],
+)
+
+swift_library(
+    name = "DependenciesTestSupport.rspm",
+    always_include_developer_search_paths = True,
+    copts = ["-DSWIFT_PACKAGE"],
+    deps = [
+        "@swiftpkg_swift_dependencies//:Dependencies.rspm",
+        "@swiftpkg_xctest_dynamic_overlay//:IssueReportingTestSupport",
+    ],
+    minimum_os_version = select({
+        "@rules_swift_package_manager//config_settings/spm/platform:ios": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:macos": "10.15",
+        "@rules_swift_package_manager//config_settings/spm/platform:tvos": "13.0",
+        "@rules_swift_package_manager//config_settings/spm/platform:watchos": "6.0",
+        "//conditions:default": "oldest",
+    }),
+    module_name = "DependenciesTestSupport",
+    package_name = "swift-dependencies",
+    srcs = ["Sources/DependenciesTestSupport/TestTrait.swift"],
+    tags = ["manual"],
+    visibility = ["//:__subpackages__"],
+)
+
+swift_library_group(
+    name = "Dependencies",
+    deps = ["@swiftpkg_swift_dependencies//:Dependencies.rspm"],
+    visibility = ["//visibility:public"],
+)
+
+swift_library_group(
+    name = "DependenciesMacros",
+    deps = ["@swiftpkg_swift_dependencies//:DependenciesMacros.rspm"],
+    visibility = ["//visibility:public"],
+)
+
+swift_library_group(
+    name = "DependenciesTestSupport",
+    deps = ["@swiftpkg_swift_dependencies//:DependenciesTestSupport.rspm"],
+    visibility = ["//visibility:public"],
+)

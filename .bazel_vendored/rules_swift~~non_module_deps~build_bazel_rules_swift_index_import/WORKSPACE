@@ -1,0 +1,1 @@
+workspace(name = "rules_swift~~non_module_deps~build_bazel_rules_swift_index_import")

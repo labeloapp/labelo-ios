@@ -1,0 +1,14 @@
+# Do not import any of the shared .bazelrc files. Keep this
+# clean for presubmit builds when publishing to BCR.
+
+# Verbose Failures
+build --verbose_failures
+
+# Strict PATH. Helps prevent build cache invalidation due to PATH differences.
+build --incompatible_strict_action_env=true
+
+# Don't allow empty glob patterns by default
+build --incompatible_disallow_empty_glob
+
+# Explicitly enable bzlmod
+common --enable_bzlmod

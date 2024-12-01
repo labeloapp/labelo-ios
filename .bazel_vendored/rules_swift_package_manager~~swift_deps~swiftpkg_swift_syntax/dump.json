@@ -1,0 +1,1738 @@
+{
+  "cLanguageStandard" : null,
+  "cxxLanguageStandard" : null,
+  "dependencies" : [
+
+  ],
+  "name" : "swift-syntax",
+  "packageKind" : {
+    "root" : [
+      "/private/var/tmp/_bazel_adincebic/d542141b6540f70d4755466fcd988e58/external/rules_swift_package_manager~~swift_deps~swiftpkg_swift_syntax"
+    ]
+  },
+  "pkgConfig" : null,
+  "platforms" : [
+    {
+      "options" : [
+
+      ],
+      "platformName" : "macos",
+      "version" : "10.15"
+    },
+    {
+      "options" : [
+
+      ],
+      "platformName" : "ios",
+      "version" : "13.0"
+    },
+    {
+      "options" : [
+
+      ],
+      "platformName" : "tvos",
+      "version" : "13.0"
+    },
+    {
+      "options" : [
+
+      ],
+      "platformName" : "watchos",
+      "version" : "6.0"
+    },
+    {
+      "options" : [
+
+      ],
+      "platformName" : "maccatalyst",
+      "version" : "13.0"
+    }
+  ],
+  "products" : [
+    {
+      "name" : "SwiftBasicFormat",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftBasicFormat"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftCompilerPlugin",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftCompilerPlugin"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftDiagnostics",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftDiagnostics"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftIDEUtils",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftIDEUtils"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftOperators",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftOperators"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftParser",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftParser"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftParserDiagnostics",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftParserDiagnostics"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftRefactor",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftRefactor"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftSyntax",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftSyntax"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftSyntaxBuilder",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftSyntaxBuilder"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftSyntaxMacros",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftSyntaxMacros"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftSyntaxMacroExpansion",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftSyntaxMacroExpansion"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftSyntaxMacrosTestSupport",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftSyntaxMacrosTestSupport"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SwiftSyntaxMacrosGenericTestSupport",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftSyntaxMacrosGenericTestSupport"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "_SwiftCompilerPluginMessageHandling",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftCompilerPluginMessageHandling"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "_SwiftLibraryPluginProvider",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SwiftLibraryPluginProvider"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    }
+  ],
+  "providers" : null,
+  "swiftLanguageVersions" : [
+    "5",
+    "6"
+  ],
+  "targets" : [
+    {
+      "dependencies" : [
+
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "_SwiftSyntaxCShims",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "_InstructionCounter",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxGenericTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftBasicFormat",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxBuilder",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacroExpansion",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "_SwiftSyntaxTestSupport",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "_SwiftSyntaxGenericTestSupport",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftSyntaxTestSupportTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftBasicFormat",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftBasicFormat",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxBuilder",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftBasicFormatTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftCompilerPluginMessageHandling",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacros",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftCompilerPlugin",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftCompilerPlugin",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftCompilerPluginTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxCShims",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftOperators",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacros",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacroExpansion",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftCompilerPluginMessageHandling",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftDiagnostics",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParserDiagnostics",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftDiagnosticsTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftIDEUtils",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftIDEUtils",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftIDEUtilsTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftSyntaxMacros",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftCompilerPluginMessageHandling",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "_SwiftLibraryPluginProviderCShims",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftLibraryPluginProvider",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "_SwiftLibraryPluginProviderCShims",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxCShims",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax509",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax510",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax600",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftSyntax",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxBuilder",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftSyntaxTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftSyntax509",
+      "packageAccess" : false,
+      "path" : "Sources/VersionMarkerModules/SwiftSyntax509",
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftSyntax510",
+      "packageAccess" : false,
+      "path" : "Sources/VersionMarkerModules/SwiftSyntax510",
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftSyntax600",
+      "packageAccess" : false,
+      "path" : "Sources/VersionMarkerModules/SwiftSyntax600",
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftBasicFormat",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParserDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftSyntaxBuilder",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxBuilder",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftSyntaxBuilderTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxBuilder",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftSyntaxMacros",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxBuilder",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacros",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftOperators",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftSyntaxMacroExpansion",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftOperators",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxBuilder",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacros",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacroExpansion",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacrosTestSupport",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftSyntaxMacroExpansionTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacroExpansion",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacros",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacrosGenericTestSupport",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftSyntaxMacrosTestSupport",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxGenericTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftIDEUtils",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacros",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacroExpansion",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftSyntaxMacrosGenericTestSupport",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacros",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacrosTestSupport",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftSyntaxMacrosTestSupportTests",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt",
+        "README.md"
+      ],
+      "name" : "SwiftParser",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftIDEUtils",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftOperators",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxBuilder",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftParserTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftBasicFormat",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftParserDiagnostics",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParserDiagnostics",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftParserDiagnosticsTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftOperators",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftOperators",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftOperatorsTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SwiftBasicFormat",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxBuilder",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "CMakeLists.txt"
+      ],
+      "name" : "SwiftRefactor",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftRefactor",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftRefactorTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_InstructionCounter",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftIDEUtils",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "Inputs"
+      ],
+      "name" : "PerformanceTest",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "_SwiftSyntaxCShims",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "_InstructionCounter",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "_SwiftSyntaxTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "_SwiftSyntaxGenericTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftBasicFormat",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftCompilerPlugin",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftCompilerPluginMessageHandling",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftIDEUtils",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftLibraryPluginProvider",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "_SwiftLibraryPluginProviderCShims",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax509",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax510",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntax600",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxBuilder",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacros",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacroExpansion",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacrosTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftSyntaxMacrosGenericTestSupport",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParser",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftParserDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftOperators",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SwiftRefactor",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SwiftSyntax-all",
+      "packageAccess" : false,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    }
+  ],
+  "toolsVersion" : {
+    "_version" : "5.8.0"
+  }
+}

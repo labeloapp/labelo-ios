@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Load the environment variables from the .env file
-source .env
+source .env || true
 
 # We want to make sure that Bazel always pics up the correct xcode version.
 
@@ -9,23 +9,26 @@ bazel_real="$BAZEL_REAL"
 bazelrc_lines=()
 
 if [[ $OSTYPE == darwin* ]]; then
-  xcode_path=$(xcode-select -p)
-  xcode_version=$(xcodebuild -version | tail -1 | cut -d " " -f3)
-  xcode_build_number=$(/usr/bin/xcodebuild -version 2>/dev/null | tail -1 | cut -d " " -f3)
+	xcode_path=$(xcode-select -p)
+	xcode_version=$(xcodebuild -version | tail -1 | cut -d " " -f3)
+	xcode_build_number=$(/usr/bin/xcodebuild -version 2>/dev/null | tail -1 | cut -d " " -f3)
 
-  bazelrc_lines+=("startup --host_jvm_args=-Xdock:name=$xcode_path")
-  bazelrc_lines+=("build --xcode_version=$xcode_version")
-  bazelrc_lines+=("build --repo_env=XCODE_VERSION=$xcode_version")
-  bazelrc_lines+=("build --repo_env=DEVELOPER_DIR=$xcode_path")
+	bazelrc_lines+=("startup --host_jvm_args=-Xdock:name=$xcode_path")
+	bazelrc_lines+=("build --xcode_version=$xcode_version")
+	bazelrc_lines+=("build --repo_env=XCODE_VERSION=$xcode_version")
+	bazelrc_lines+=("build --repo_env=DEVELOPER_DIR=$xcode_path")
+
+	# Write to xcode.bazelrc
+	printf '%s\n' "${bazelrc_lines[@]}" >xcode.bazelrc
 fi
 
 # Add remote cache if API key is present
 lines=()
 if [ -z $BUILD_BUDDY_API_KEY ]; then
-  echo "BUILD BUDDY API Key not found"
+	echo "BUILD BUDDY API Key not found"
 else
-  echo "Found BUILD BUDDY API Key, adding remote cache"
-    lines+="--remote_header=x-buildbuddy-api-key=$BUILD_BUDDY_API_KEY"
+	echo "Found BUILD BUDDY API Key, adding remote cache"
+	lines+=("--remote_header=x-buildbuddy-api-key=$BUILD_BUDDY_API_KEY")
 fi
 
-exec "$bazel_real" "$@" "$lines"
+exec "$bazel_real" "$@" "${lines[@]}"
