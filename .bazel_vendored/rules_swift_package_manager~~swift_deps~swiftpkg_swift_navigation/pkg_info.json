@@ -1,0 +1,632 @@
+{
+  "default_localization": "en",
+  "dependencies": [
+    {
+      "file_system": null,
+      "identity": "swift-collections",
+      "name": "swift-collections",
+      "source_control": null
+    },
+    {
+      "file_system": null,
+      "identity": "swift-docc-plugin",
+      "name": "swift-docc-plugin",
+      "source_control": null
+    },
+    {
+      "file_system": null,
+      "identity": "swift-case-paths",
+      "name": "swift-case-paths",
+      "source_control": null
+    },
+    {
+      "file_system": null,
+      "identity": "swift-concurrency-extras",
+      "name": "swift-concurrency-extras",
+      "source_control": null
+    },
+    {
+      "file_system": null,
+      "identity": "swift-custom-dump",
+      "name": "swift-custom-dump",
+      "source_control": null
+    },
+    {
+      "file_system": null,
+      "identity": "swift-perception",
+      "name": "swift-perception",
+      "source_control": null
+    },
+    {
+      "file_system": null,
+      "identity": "xctest-dynamic-overlay",
+      "name": "xctest-dynamic-overlay",
+      "source_control": null
+    }
+  ],
+  "name": "swift-navigation",
+  "path": "/private/var/tmp/_bazel_adincebic/d542141b6540f70d4755466fcd988e58/external/rules_swift_package_manager~~swift_deps~swiftpkg_swift_navigation",
+  "platforms": [
+    {
+      "name": "ios",
+      "version": "13.0"
+    },
+    {
+      "name": "macos",
+      "version": "10.15"
+    },
+    {
+      "name": "tvos",
+      "version": "13.0"
+    },
+    {
+      "name": "watchos",
+      "version": "6.0"
+    }
+  ],
+  "products": [
+    {
+      "name": "SwiftNavigation",
+      "targets": [
+        "SwiftNavigation"
+      ],
+      "type": {
+        "executable": false,
+        "is_executable": false,
+        "is_library": true,
+        "is_macro": false,
+        "is_plugin": false,
+        "library": {
+          "kind": "automatic"
+        }
+      }
+    },
+    {
+      "name": "SwiftUINavigation",
+      "targets": [
+        "SwiftUINavigation"
+      ],
+      "type": {
+        "executable": false,
+        "is_executable": false,
+        "is_library": true,
+        "is_macro": false,
+        "is_plugin": false,
+        "library": {
+          "kind": "automatic"
+        }
+      }
+    },
+    {
+      "name": "UIKitNavigation",
+      "targets": [
+        "UIKitNavigation"
+      ],
+      "type": {
+        "executable": false,
+        "is_executable": false,
+        "is_library": true,
+        "is_macro": false,
+        "is_plugin": false,
+        "library": {
+          "kind": "automatic"
+        }
+      }
+    },
+    {
+      "name": "AppKitNavigation",
+      "targets": [
+        "AppKitNavigation"
+      ],
+      "type": {
+        "executable": false,
+        "is_executable": false,
+        "is_library": true,
+        "is_macro": false,
+        "is_plugin": false,
+        "library": {
+          "kind": "automatic"
+        }
+      }
+    }
+  ],
+  "targets": [
+    {
+      "artifact_download_info": null,
+      "c99name": "SwiftNavigation",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "swift-case-paths",
+            "product_name": "CasePaths"
+          },
+          "target": null
+        },
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "swift-custom-dump",
+            "product_name": "CustomDump"
+          },
+          "target": null
+        },
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "swift-concurrency-extras",
+            "product_name": "ConcurrencyExtras"
+          },
+          "target": null
+        },
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "swift-collections",
+            "product_name": "OrderedCollections"
+          },
+          "target": null
+        },
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "swift-perception",
+            "product_name": "Perception"
+          },
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "SwiftNavigation.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "SwiftNavigation",
+      "objc_src_info": null,
+      "path": "Sources/SwiftNavigation",
+      "product_memberships": [
+        "SwiftNavigation",
+        "SwiftUINavigation",
+        "UIKitNavigation",
+        "AppKitNavigation"
+      ],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "AlertState.swift",
+        "Bind.swift",
+        "Binding.swift",
+        "ButtonState.swift",
+        "ButtonStateBuilder.swift",
+        "ConfirmationDialogState.swift",
+        "HashableObject.swift",
+        "Internal/AssumeIsolated.swift",
+        "Internal/Deprecations.swift",
+        "Internal/ErrorMechanism.swift",
+        "Internal/Exports.swift",
+        "Internal/HashableStaticString.swift",
+        "Internal/KeyPath+Sendable.swift",
+        "Internal/ToOptionalUnit.swift",
+        "NSObject+Observe.swift",
+        "Observe.swift",
+        "TextState.swift",
+        "UIBindable.swift",
+        "UIBinding.swift",
+        "UINavigationPath.swift",
+        "UITransaction.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "regular"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "SwiftNavigationTests",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "SwiftNavigation"
+          },
+          "product": null,
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "SwiftNavigationTests.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "SwiftNavigationTests",
+      "objc_src_info": null,
+      "path": "Tests/SwiftNavigationTests",
+      "product_memberships": [],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "ButtonStateTests.swift",
+        "IsolationTests.swift",
+        "LifetimeTests.swift",
+        "ObserveTests.swift",
+        "TextStateTests.swift",
+        "UIBindableTests.swift",
+        "UIBindingTests.swift",
+        "UINavigationPathTests.swift",
+        "UITransactionTests.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "test"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "SwiftUINavigation",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "UIKitNavigation"
+          },
+          "product": null,
+          "target": null
+        },
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "swift-case-paths",
+            "product_name": "CasePaths"
+          },
+          "target": null
+        },
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "xctest-dynamic-overlay",
+            "product_name": "IssueReporting"
+          },
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "SwiftUINavigation.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "SwiftUINavigation",
+      "objc_src_info": null,
+      "path": "Sources/SwiftUINavigation",
+      "product_memberships": [
+        "SwiftUINavigation"
+      ],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "Alert.swift",
+        "Binding.swift",
+        "ConfirmationDialog.swift",
+        "FullScreenCover.swift",
+        "Internal/Binding+Internal.swift",
+        "Internal/Exports.swift",
+        "Internal/Identified.swift",
+        "NavigationDestination.swift",
+        "NavigationLink.swift",
+        "Popover.swift",
+        "Sheet.swift",
+        "WithState.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "regular"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "SwiftUINavigationTests",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "SwiftUINavigation"
+          },
+          "product": null,
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "SwiftUINavigationTests.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "SwiftUINavigationTests",
+      "objc_src_info": null,
+      "path": "Tests/SwiftUINavigationTests",
+      "product_memberships": [],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "AlertTests.swift",
+        "BindingTests.swift",
+        "SwiftUINavigationTests.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "test"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "UIKitNavigation",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "SwiftNavigation"
+          },
+          "product": null,
+          "target": null
+        },
+        {
+          "by_name": {
+            "condition": null,
+            "name": "UIKitNavigationShim"
+          },
+          "product": null,
+          "target": null
+        },
+        {
+          "by_name": null,
+          "product": {
+            "condition": null,
+            "dep_name": "swift-concurrency-extras",
+            "product_name": "ConcurrencyExtras"
+          },
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "UIKitNavigation.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "UIKitNavigation",
+      "objc_src_info": null,
+      "path": "Sources/UIKitNavigation",
+      "product_memberships": [
+        "SwiftUINavigation",
+        "UIKitNavigation"
+      ],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "Bindings/UIColorWell.swift",
+        "Bindings/UIControl.swift",
+        "Bindings/UIDatePicker.swift",
+        "Bindings/UIPageControl.swift",
+        "Bindings/UISegmentedControl.swift",
+        "Bindings/UISlider.swift",
+        "Bindings/UIStepper.swift",
+        "Bindings/UISwitch.swift",
+        "Bindings/UITabBarController.swift",
+        "Bindings/UITextField.swift",
+        "Internal/Exports.swift",
+        "Internal/PopFromViewController.swift",
+        "Navigation/Dismiss.swift",
+        "Navigation/NavigationStackController.swift",
+        "Navigation/Presentation.swift",
+        "Navigation/Push.swift",
+        "Navigation/UIAlertController.swift",
+        "SwiftUI/Representable.swift",
+        "UIBinding.swift",
+        "UIKitAnimation.swift",
+        "UITransaction.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "regular"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "UIKitNavigationShim",
+      "clang_settings": null,
+      "clang_src_info": {
+        "explicit_srcs": [
+          "Sources/UIKitNavigationShim/shim.m"
+        ],
+        "hdrs": [
+          "Sources/UIKitNavigationShim/include/shim.h"
+        ],
+        "modulemap_path": null,
+        "private_includes": [],
+        "public_includes": [
+          "Sources/UIKitNavigationShim/include"
+        ],
+        "srcs": [
+          "Sources/UIKitNavigationShim/shim.m"
+        ],
+        "textual_hdrs": [
+          "Sources/UIKitNavigationShim/shim.m"
+        ]
+      },
+      "cxx_settings": null,
+      "dependencies": [],
+      "exclude_paths": [],
+      "label": {
+        "name": "UIKitNavigationShim.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "ClangTarget",
+      "name": "UIKitNavigationShim",
+      "objc_src_info": {
+        "builtin_frameworks": [
+          "UIKit"
+        ]
+      },
+      "path": "Sources/UIKitNavigationShim",
+      "product_memberships": [
+        "SwiftUINavigation",
+        "UIKitNavigation"
+      ],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "shim.m"
+      ],
+      "swift_settings": null,
+      "swift_src_info": null,
+      "type": "regular"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "AppKitNavigation",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "SwiftNavigation"
+          },
+          "product": null,
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "AppKitNavigation.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "AppKitNavigation",
+      "objc_src_info": null,
+      "path": "Sources/AppKitNavigation",
+      "product_memberships": [
+        "AppKitNavigation"
+      ],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "AppKitAnimation.swift",
+        "Internal/Exports.swift",
+        "SwiftUI/Representable.swift",
+        "UIBinding.swift",
+        "UITransaction.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "regular"
+    },
+    {
+      "artifact_download_info": null,
+      "c99name": "UIKitNavigationTests",
+      "clang_settings": null,
+      "clang_src_info": null,
+      "cxx_settings": null,
+      "dependencies": [
+        {
+          "by_name": {
+            "condition": null,
+            "name": "UIKitNavigation"
+          },
+          "product": null,
+          "target": null
+        }
+      ],
+      "exclude_paths": [],
+      "label": {
+        "name": "UIKitNavigationTests.rspm",
+        "package": "",
+        "repository_name": "@"
+      },
+      "linker_settings": null,
+      "module_type": "SwiftTarget",
+      "name": "UIKitNavigationTests",
+      "objc_src_info": null,
+      "path": "Tests/UIKitNavigationTests",
+      "product_memberships": [],
+      "public_hdrs_path": null,
+      "resources": [],
+      "source_paths": null,
+      "sources": [
+        "MemoryManagementTests.swift",
+        "ObserveTests.swift",
+        "UIControlTests.swift",
+        "UITransactionTests.swift",
+        "ViewControllerRepresentingTests.swift"
+      ],
+      "swift_settings": null,
+      "swift_src_info": {
+        "discovered_res_files": [],
+        "has_objc_directive": false
+      },
+      "type": "test"
+    }
+  ],
+  "tools_version": "6.0.0",
+  "url": "https://github.com/pointfreeco/swift-navigation",
+  "version": "2.2.2"
+}

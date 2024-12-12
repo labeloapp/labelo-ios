@@ -4,19 +4,23 @@ common --cache_computed_file_digests=500000
 
 common --flag_alias=ios_device=@rules_apple//apple/build_settings:ios_device
 
+# We want to be able to develop offline, thus we vendor all our Bazel external deps.
+common --vendor_dir=.bazel_vendored
+
+
 # We disable sandboxing as it is slow on Darwin.
 common --noworker_sandboxing
 common --spawn_strategy=worker,local
 
 # Use a static value for `PATH` and does not inherit `LD_LIBRARY_PATH`. Doesn't let environment
 # variables like `PATH` sneak into the build, which can cause massive cache misses when they change.
-build                       --incompatible_strict_action_env
+build --incompatible_strict_action_env
 
 # We Disallow empty lists of files
 build --incompatible_disallow_empty_glob
 
 # Use all available CPU cores for workers.
-build                       --worker_max_instances=HOST_CPUS
+build --worker_max_instances=HOST_CPUS
 
 # Enable local disk cache
 common --disk_cache=~/bazel_disk_cache

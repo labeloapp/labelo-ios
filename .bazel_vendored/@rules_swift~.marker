@@ -1,0 +1,3 @@
+873b29a89fd6c5ede5ccaa3e2b1f1d5ee4d9e44591932a13eaf50606e3fa848f
+ENV:BAZEL_HTTP_RULES_URLS_AS_DEFAULT_CANONICAL_ID \0
+FILE:@@//patches/rules_swift-set-platform-version.patch 05a723e314e3695ccd429ea8e9ecd2ab50faa7916215be033c81ed38b4e6846e

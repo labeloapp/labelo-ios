@@ -33,7 +33,7 @@ xcode_provisioning_profile(
 
 local_provisioning_profile(
     name = "provisioning_profile",
-    profile_name = "iOS Labelo Provisioning Profile",
+    profile_name = "iOS Team Provisioning Profile: app.labelo.labelo",
     team_id = "RK3RLP5S33",
 )
 

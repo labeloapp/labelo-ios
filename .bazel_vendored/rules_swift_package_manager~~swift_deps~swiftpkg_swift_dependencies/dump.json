@@ -1,0 +1,515 @@
+{
+  "cLanguageStandard" : null,
+  "cxxLanguageStandard" : null,
+  "dependencies" : [
+    {
+      "sourceControl" : [
+        {
+          "identity" : "combine-schedulers",
+          "location" : {
+            "remote" : [
+              {
+                "urlString" : "https://github.com/pointfreeco/combine-schedulers"
+              }
+            ]
+          },
+          "productFilter" : null,
+          "requirement" : {
+            "range" : [
+              {
+                "lowerBound" : "1.0.2",
+                "upperBound" : "2.0.0"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sourceControl" : [
+        {
+          "identity" : "swift-clocks",
+          "location" : {
+            "remote" : [
+              {
+                "urlString" : "https://github.com/pointfreeco/swift-clocks"
+              }
+            ]
+          },
+          "productFilter" : null,
+          "requirement" : {
+            "range" : [
+              {
+                "lowerBound" : "1.0.4",
+                "upperBound" : "2.0.0"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sourceControl" : [
+        {
+          "identity" : "swift-concurrency-extras",
+          "location" : {
+            "remote" : [
+              {
+                "urlString" : "https://github.com/pointfreeco/swift-concurrency-extras"
+              }
+            ]
+          },
+          "productFilter" : null,
+          "requirement" : {
+            "range" : [
+              {
+                "lowerBound" : "1.0.0",
+                "upperBound" : "2.0.0"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sourceControl" : [
+        {
+          "identity" : "xctest-dynamic-overlay",
+          "location" : {
+            "remote" : [
+              {
+                "urlString" : "https://github.com/pointfreeco/xctest-dynamic-overlay"
+              }
+            ]
+          },
+          "productFilter" : null,
+          "requirement" : {
+            "range" : [
+              {
+                "lowerBound" : "1.4.0",
+                "upperBound" : "2.0.0"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sourceControl" : [
+        {
+          "identity" : "swift-syntax",
+          "location" : {
+            "remote" : [
+              {
+                "urlString" : "https://github.com/swiftlang/swift-syntax"
+              }
+            ]
+          },
+          "productFilter" : null,
+          "requirement" : {
+            "range" : [
+              {
+                "lowerBound" : "509.0.0",
+                "upperBound" : "601.0.0-prerelease"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sourceControl" : [
+        {
+          "identity" : "swift-macro-testing",
+          "location" : {
+            "remote" : [
+              {
+                "urlString" : "https://github.com/pointfreeco/swift-macro-testing"
+              }
+            ]
+          },
+          "productFilter" : null,
+          "requirement" : {
+            "range" : [
+              {
+                "lowerBound" : "0.2.0",
+                "upperBound" : "1.0.0"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "sourceControl" : [
+        {
+          "identity" : "swift-docc-plugin",
+          "location" : {
+            "remote" : [
+              {
+                "urlString" : "https://github.com/apple/swift-docc-plugin"
+              }
+            ]
+          },
+          "productFilter" : null,
+          "requirement" : {
+            "range" : [
+              {
+                "lowerBound" : "1.0.0",
+                "upperBound" : "2.0.0"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "name" : "swift-dependencies",
+  "packageKind" : {
+    "root" : [
+      "/private/var/tmp/_bazel_adincebic/d542141b6540f70d4755466fcd988e58/external/rules_swift_package_manager~~swift_deps~swiftpkg_swift_dependencies"
+    ]
+  },
+  "pkgConfig" : null,
+  "platforms" : [
+    {
+      "options" : [
+
+      ],
+      "platformName" : "ios",
+      "version" : "13.0"
+    },
+    {
+      "options" : [
+
+      ],
+      "platformName" : "macos",
+      "version" : "10.15"
+    },
+    {
+      "options" : [
+
+      ],
+      "platformName" : "tvos",
+      "version" : "13.0"
+    },
+    {
+      "options" : [
+
+      ],
+      "platformName" : "watchos",
+      "version" : "6.0"
+    }
+  ],
+  "products" : [
+    {
+      "name" : "Dependencies",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "Dependencies"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "DependenciesMacros",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "DependenciesMacros"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "DependenciesTestSupport",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "DependenciesTestSupport"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    }
+  ],
+  "providers" : null,
+  "swiftLanguageVersions" : [
+    "6"
+  ],
+  "targets" : [
+    {
+      "dependencies" : [
+        {
+          "product" : [
+            "IssueReporting",
+            "xctest-dynamic-overlay",
+            null,
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "DependenciesTestObserver",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "product" : [
+            "Clocks",
+            "swift-clocks",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "CombineSchedulers",
+            "combine-schedulers",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "ConcurrencyExtras",
+            "swift-concurrency-extras",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "IssueReporting",
+            "xctest-dynamic-overlay",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "XCTestDynamicOverlay",
+            "xctest-dynamic-overlay",
+            null,
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "Dependencies",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "Dependencies",
+            null
+          ]
+        },
+        {
+          "product" : [
+            "IssueReportingTestSupport",
+            "xctest-dynamic-overlay",
+            null,
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "DependenciesTestSupport",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "Dependencies",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "DependenciesMacros",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "DependenciesTestSupport",
+            null
+          ]
+        },
+        {
+          "product" : [
+            "IssueReportingTestSupport",
+            "xctest-dynamic-overlay",
+            null,
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "DependenciesTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "DependenciesMacrosPlugin",
+            null
+          ]
+        },
+        {
+          "product" : [
+            "IssueReporting",
+            "xctest-dynamic-overlay",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "XCTestDynamicOverlay",
+            "xctest-dynamic-overlay",
+            null,
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "DependenciesMacros",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "product" : [
+            "SwiftSyntaxMacros",
+            "swift-syntax",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "SwiftCompilerPlugin",
+            "swift-syntax",
+            null,
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "DependenciesMacrosPlugin",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "macro"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "DependenciesMacros",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "DependenciesMacrosPlugin",
+            null
+          ]
+        },
+        {
+          "product" : [
+            "MacroTesting",
+            "swift-macro-testing",
+            null,
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "DependenciesMacrosPluginTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    }
+  ],
+  "toolsVersion" : {
+    "_version" : "6.0.0"
+  }
+}
