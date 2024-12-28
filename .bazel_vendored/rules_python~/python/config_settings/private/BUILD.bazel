@@ -1,7 +1,0 @@
-filegroup(
-    name = "distribution",
-    srcs = glob(["*.bzl"]) + [
-        "BUILD.bazel",
-    ],
-    visibility = ["//python/config_settings:__pkg__"],
-)

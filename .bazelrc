@@ -4,10 +4,6 @@ common --cache_computed_file_digests=500000
 
 common --flag_alias=ios_device=@rules_apple//apple/build_settings:ios_device
 
-# We want to be able to develop offline, thus we vendor all our Bazel external deps.
-common --vendor_dir=.bazel_vendored
-
-
 # We disable sandboxing as it is slow on Darwin.
 common --noworker_sandboxing
 common --spawn_strategy=worker,local
@@ -24,10 +20,10 @@ build --worker_max_instances=HOST_CPUS
 
 # Enable local disk cache
 common --disk_cache=~/bazel_disk_cache
-common --remote_cache=grpcs://remote.buildbuddy.io
 common --noremote_upload_local_results
 # We don't want CI machines to use disk cache.
 common:upload --disk_cache=
+common:upload --remote_cache=grpcs://remote.buildbuddy.io
 common:upload --remote_upload_local_results
 
 # No need to cache these types of artifacts
@@ -40,7 +36,6 @@ common:ci --color=yes
 common:ci --announce_rc
 common:CI --bes_results_url=https://app.buildbuddy.io/invocation/
 common:ci --bes_backend=grpcs://remote.buildbuddy.io
-
 
 # Cache warming
 
@@ -55,4 +50,4 @@ test --build_tests_only
 test --test_output=errors
 
 # Load Xcode bazelrc file.
-xcode.bazelrc
+try-import xcode.bazelrc

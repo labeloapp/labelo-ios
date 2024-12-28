@@ -1,6 +1,0 @@
-load("//go:def.bzl", "go_binary")
-
-go_binary(
-    name = "hello",
-    srcs = ["hello.go"],
-)

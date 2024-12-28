@@ -1,3 +1,0 @@
-func second() {
-    print("second")
-}

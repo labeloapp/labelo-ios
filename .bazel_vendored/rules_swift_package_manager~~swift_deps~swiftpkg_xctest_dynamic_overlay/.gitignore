@@ -1,9 +1,0 @@
-.DS_Store
-/.build
-/.swiftpm
-/archives/
-/xcframeworks/
-/Bundle
-/Packages
-/*.xcodeproj
-xcuserdata/
