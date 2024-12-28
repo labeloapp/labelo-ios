@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-package adjusted.c;
-
-message C {
-  int64 c = 1;
-}

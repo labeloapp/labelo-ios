@@ -1,5 +1,0 @@
-package transitive
-
-var (
-	_ = ""
-)

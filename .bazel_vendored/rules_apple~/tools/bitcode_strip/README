@@ -1,3 +1,0 @@
-bitcode_strip removes the bitcode segment in a Mach-O file.
-
-bitcode_strip only runs on Darwin.

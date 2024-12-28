@@ -1,3 +1,0 @@
-eed2afac88e8fae9a2164c3654fc27a083686f44a524547fa430c0dec3d15f12
-REPO_MAPPING:rules_go~,bazel_tools bazel_tools
-REPO_MAPPING:rules_go~,io_bazel_rules_go rules_go~

@@ -1,3 +1,0 @@
-load(":parse_whl_name_tests.bzl", "parse_whl_name_test_suite")
-
-parse_whl_name_test_suite(name = "parse_whl_name_tests")

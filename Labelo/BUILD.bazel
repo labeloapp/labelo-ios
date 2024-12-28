@@ -1,9 +1,9 @@
 load("@build_bazel_rules_apple//apple:apple.bzl", "local_provisioning_profile")
 load("@build_bazel_rules_apple//apple:ios.bzl", "ios_application", "ios_unit_test")
 load("@build_bazel_rules_apple//apple:versioning.bzl", "apple_bundle_version")
+load("@build_bazel_rules_apple//apple:xcarchive.bzl", "xcarchive")
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 load("@rules_xcodeproj//xcodeproj:defs.bzl", "xcode_provisioning_profile")
-load("@build_bazel_rules_apple//apple:xcarchive.bzl", "xcarchive")
 load("//tools:shared.bzl", "app_info", "versions")
 
 # Version
@@ -40,7 +40,7 @@ local_provisioning_profile(
 local_provisioning_profile(
     name = "release_provisioning_profile",
     profile_name = "Labelo iOS App Store",
-    team_id = "RK3RLP5S33"
+    team_id = "RK3RLP5S33",
 )
 
 # Packaging
@@ -82,7 +82,9 @@ ios_application(
 ios_unit_test(
     name = "Tests",
     bundle_id = "app.labelo.LabeloTests",
-    minimum_os_version = "18.0",
+    minimum_os_version = "18.2",
+    runner = "@build_bazel_rules_apple//apple/testing/default_runner:ios_xctestrun_ordered_runner",
+    test_host = ":Labelo",
     visibility = ["@rules_xcodeproj//xcodeproj:generated"],
     deps = [":Tests.library"],
 )

@@ -1,3 +1,0 @@
-some_target(
-    name = "__test__",
-)

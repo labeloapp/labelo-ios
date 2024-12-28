@@ -1,6 +1,0 @@
-# Set the config type to use
-common --config=ci
-# Repository Cache
-build:ci --repository_cache=~/.cache/bazel_repo
-# Disk Cache
-build:ci --disk_cache=~/.cache/bazel_disk
